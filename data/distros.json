@@ -196,11 +196,6 @@
 			"link": "https://packages.ubuntu.com/xenial/",
 			"alt": ["libglvnd"]
 		}, {
-			"name": "Artful (17.10)",
-			"code": "ubuntu_17_10",
-			"eol": "2018-07-19",
-			"link": "https://packages.ubuntu.com/artful/"
-		}, {
 			"name": "Bionic (18.04)",
 			"code": "ubuntu_18_04",
 			"eol": "2023-04",
