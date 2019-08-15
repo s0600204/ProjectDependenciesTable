@@ -1,0 +1,33 @@
+
+table.wiki {
+	border-collapse: collapse;
+}
+
+table.wiki tr {
+	margin: 0;
+	padding: 0;
+}
+
+table.wiki tr {
+	border: solid;
+	border-width: 1px 0;
+	border-color: rgb(160, 160, 160);
+}
+
+table.wiki th {
+	font-weight: normal;
+}
+
+table.wiki td, table.wiki th {
+	margin: 0;
+	padding: 0.1em 0.2em;
+}
+
+/*
+span.icon::before {
+	content: "\1F517";
+	font-size: 0.6em;
+	font-style: normal;
+	padding-right: 0.2em;
+}
+*/

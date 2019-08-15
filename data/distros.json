@@ -1,0 +1,224 @@
+[
+	{
+		"name": "ArchLinux",
+		"code": "arch",
+		"link": "https://www.archlinux.org/packages",
+		"eol": "inf",
+		"alt": ["tex-gyre"]
+	},
+	{
+		"name": "Debian",
+		"releases": [{
+			"name": "Jessie (oldstable)",
+			"code": "debian_oldstable",
+			"link": "https://packages.debian.org/oldstable/",
+			"eol": "2018-06-06",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "Stretch (stable)",
+			"code": "debian_stable",
+			"link": "https://packages.debian.org/stable/",
+			"eol": "2020",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "(stable backports)",
+			"code": "debian_stable_backports",
+			"link": "https://packages.debian.org/stable-backports/",
+			"eol": "2020"
+		}, {
+			"name": "Buster (testing)",
+			"code": "debian_testing",
+			"link": "https://packages.debian.org/testing/"
+		}, {
+			"name": "Sid (unstable)",
+			"code": "debian_unstable",
+			"link": "https://packages.debian.org/unstable/",
+			"eol": "inf"
+		}]
+	},
+	{
+		"name": "CentOS",
+		"link": "https://www.centos.org/",
+		"releases": [{
+			"name": "6",
+			"code": "centos_6",
+			"link": "http://mirror.centos.org/centos-6/6/",
+			"eol": "2020-11",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "7",
+			"code": "centos_7",
+			"link": "http://mirror.centos.org/centos-7/7/",
+			"eol": "2024-06",
+			"alt": ["libglvnd"]
+		}]
+	},
+	{
+		"name": "EPEL",
+		"link": "https://fedoraproject.org/wiki/EPEL",
+		"releases": [{
+			"name": "6",
+			"code": "epel_6"
+		}, {
+			"name": "7",
+			"code": "epel_7"
+		}]
+	},
+	{
+		"name": "Fedora",
+		"link": "https://getfedora.org/",
+		"releases": [{
+			"name": "26",
+			"code": "fedora_26",
+			"eol": "2018-06"
+		}, {
+			"name": "27",
+			"code": "fedora_27",
+			"eol": "2018-11"
+		}, {
+			"name": "28",
+			"code": "fedora_28",
+			"eol": "2019-05"
+		}, {
+			"name": "29",
+			"code": "fedora_29",
+			"eol": "2019-11"
+		}, {
+			"name": "30",
+			"code": "fedora_30",
+			"eol": "2020-06"
+		}, {
+			"name": "Rawhide",
+			"code": "fedora_rawhide",
+			"eol": "inf"
+		}]
+	},
+	{
+		"name": "FreeBSD",
+		"code": "freebsd",
+		"link": "https://www.freebsd.org/"
+	},
+	{
+		"name": "Gentoo",
+		"code": "gentoo",
+		"link": "https://www.gentoo.org/",
+		"eol": "inf"
+	},
+	{
+		"name": "OpenBSD",
+		"code": "openbsd",
+		"link": "https://www.openbsd.org/"
+	},
+	{
+		"name": "OpenMandriva",
+		"link": "https://www.openmandriva.org/",
+		"releases": [{
+			"name": "3.x",
+			"code": "openmandriva_3",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "Cooker",
+			"code": "openmandriva_cooker"
+		}]
+	},
+	{
+		"name": "OpenSUSE",
+		"releases": [{
+			"name": "Leap 42.3",
+			"code": "opensuse_leap_42_3",
+			"alt": ["nspr", "libglvnd"],
+			"eol": "2019-06-30"
+		}, {
+			"name": "Leap 15",
+			"code": "opensuse_leap_15_0",
+			"alt": ["nspr"],
+			"eol": "2019-11"
+		}, {
+			"name": "Leap 15.1",
+			"code": "opensuse_leap_15_1",
+			"alt": ["nspr"],
+			"eol": "2020-11"
+		}, {
+			"name": "Tumbleweed",
+			"code": "opensuse_tumbleweed",
+			"alt": ["nspr"],
+			"eol": "inf"
+		}]
+	},
+	{
+		"name": "Raspbian",
+		"link": "https://www.raspbian.org/",
+		"releases": [{
+			"name": "Old Stable",
+			"code": "raspbian_oldstable",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "Stable",
+			"code": "raspbian_stable",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "Testing",
+			"code": "raspbian_testing"
+		}]
+	},
+	{
+		"name": "Slackware",
+		"link": "https://packages.slackware.com/",
+		"releases": [{
+			"name": "14.2",
+			"alt": ["nspr", "libglvnd"],
+			"code": "slackware_14_2"
+		}, {
+			"name": "Current",
+			"alt": ["nspr", "libglvnd"],
+			"code": "slackware_current"
+		}, {
+			"name": "SlackBuilds",
+			"code": "slackbuilds",
+			"alt": ["nspr", "libglvnd"],
+			"link": "https://slackbuilds.org/repository/14.2/",
+			"eol": "inf"
+		}]
+	},
+	{
+		"name": "Ubuntu",
+		"link": "https://wiki.ubuntu.com/Releases",
+		"releases": [{
+			"name": "Trusty (14.04)",
+			"code": "ubuntu_14_04",
+			"eol": "2019-04",
+			"link": "https://packages.ubuntu.com/trusty/",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "Xenial (16.04)",
+			"code": "ubuntu_16_04",
+			"eol": "2021-04",
+			"link": "https://packages.ubuntu.com/xenial/",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "Artful (17.10)",
+			"code": "ubuntu_17_10",
+			"eol": "2018-07-19",
+			"link": "https://packages.ubuntu.com/artful/"
+		}, {
+			"name": "Bionic (18.04)",
+			"code": "ubuntu_18_04",
+			"eol": "2023-04",
+			"link": "https://packages.ubuntu.com/bionic/"
+		}, {
+			"name": "Cosmic (18.10)",
+			"code": "ubuntu_18_10",
+			"eol": "2019-07",
+			"link": "https://packages.ubuntu.com/cosmic/"
+		}, {
+			"name": "Disco (19.04)",
+			"code": "ubuntu_19_04",
+			"eol": "2020-01",
+			"link": "https://packages.ubuntu.com/disco/"
+		}, {
+			"name": "Eoan (19.10)",
+			"code": "ubuntu_19_10",
+			"link": "https://packages.ubuntu.com/eoan/"
+		}]
+	}
+]
