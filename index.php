@@ -6,6 +6,7 @@
 	<title>Project Dependencies</title>
 	<link href="style.css" rel="stylesheet"/>
 	<?php include "./data/consts.php"; ?>
+	<?php include "./process.php"; ?>
 </head>
 
 <body>
