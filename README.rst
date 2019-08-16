@@ -104,7 +104,7 @@ Whilst for distributions that release in discrete iterations, it looks something
 	The name of the specific distribution or a particular release
 
 ``code``
-	Required.
+	Required if ``hard`` is not defined.
 
 	The code with which Repology_ identifies the distribution or particular release
 

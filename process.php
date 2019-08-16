@@ -29,9 +29,12 @@ curl_setopt($g_ch, CURLOPT_RETURNTRANSFER, True);
 $g_DistroList = array();
 foreach ($c_Distros as $distro)
 	if (isset($distro['releases']))
+	{
 		foreach ($distro['releases'] as $release)
-			$g_DistroList[] = $release['code'];
-	else
+			if (isset($release['code']))
+				$g_DistroList[] = $release['code'];
+	}
+	else if (isset($distro['code']))
 		$g_DistroList[] = $distro['code'];
 
 $g_DependencyList = array();
