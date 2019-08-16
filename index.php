@@ -30,7 +30,7 @@
 <dt><span style="background: #4c1; color: #fff; padding: 0.1em 0; border-radius: 3px;">
 	<span style="background:linear-gradient(rgba(73,73,73,.1), rgba(0,0,0,.1)); padding: 0.1em 0.2em; border-radius: 3px;"><b>Green</b></span>
 </span></dt>
-<dd>Package provided is the latest stable release of that library (as determined by <i>Repology</i>).<br/><br/></dd>
+<dd>Package provided is the latest stable release (as determined by <i>Repology</i>).<br/><br/></dd>
 
 <dt><span style="background: #9f9f9f; color: #fff; padding: 0.1em 0; border-radius: 3px;">
 	<span style="background:linear-gradient(rgba(73,73,73,.1), rgba(0,0,0,.1)); padding: 0.1em 0.2em; border-radius: 3px;"><b>Light Grey</b></span>

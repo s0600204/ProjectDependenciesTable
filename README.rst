@@ -12,21 +12,21 @@ Guide
 
 The script reads from two data files:
 
-* ``libraries.json`` - lists all dependencies of the project
-* ``distros.json`` - defines which distributions should be limited
+* ``dependencies.json`` - lists all dependencies of the project
+* ``distros.json`` - defines which distributions should be listed
 
 
-``libraries.json``
+``dependencies.json``
 ''''''''''''''''''
 
-Within ``libraries.json``, dependencies are defined like so::
+Within ``dependencies.json``, dependencies are defined like so::
 
 	{
 		"name": "<name>",
 		"code": "<code>"
 	}
 
-where ``<name>`` is the name of the dependency, and ``<code>`` is the code that Repology_ uses to identify a library or package (in many cases these may be the same).
+where ``<name>`` is the name of the dependency, and ``<code>`` is the code that Repology_ uses to identify the relevant package (in many cases both ``<name>`` and ``<code>`` may be identical).
 
 If your project requires a minimum version of a dependency, this may be set by the use of the optional ``minRequired`` key, thusly::
 

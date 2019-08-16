@@ -1,10 +1,10 @@
 <?php
 
-function generateImageLink ($repoCode, $libraryCode, $minRequired = False)
+function generateImageLink ($repoCode, $dependencyCode, $minRequired = False)
 {
 	if ($minRequired)
-		return "<img src='https://repology.org/badge/version-only-for-repo/" . $repoCode . "/" . $libraryCode . ".svg?minversion=" . $minRequired . "' style='vertical-align: middle'/>";
-	return "<img src='https://repology.org/badge/version-only-for-repo/" . $repoCode . "/" . $libraryCode . ".svg' style='vertical-align: middle'/>";
+		return "<img src='https://repology.org/badge/version-only-for-repo/" . $repoCode . "/" . $dependencyCode . ".svg?minversion=" . $minRequired . "' style='vertical-align: middle'/>";
+	return "<img src='https://repology.org/badge/version-only-for-repo/" . $repoCode . "/" . $dependencyCode . ".svg' style='vertical-align: middle'/>";
 }
 
 function generateGenericLink($addr, $text)
@@ -12,7 +12,7 @@ function generateGenericLink($addr, $text)
 	return "<a href='$addr' class='ext-link'><span class='icon'></span>" . $text . "</a>";
 }
 
-function generateLibraryLink ($code, $name)
+function generateDependencyLink ($code, $name)
 {
 	return generateGenericLink("https://repology.org/metapackage/$code", $name);
 }
@@ -47,32 +47,32 @@ function getEOL($distro)
 }
 
 
-// Horizontal Header: Library Name
+// Horizontal Header: Dependency Name
 echo "<tr>\n";
-echo "\t<th colspan='3'><b>Libraries</b></th>\n";
-foreach ($c_Libraries as $library)
+echo "\t<th colspan='3'><b>Dependencies</b></th>\n";
+foreach ($c_Dependencies as $dependency)
 {
 	echo "\t<th>";
-	echo generateLibraryLink($library['code'], $library['name']);
-	if (isset($library['alt-code']))
+	echo generateDependencyLink($dependency['code'], $dependency['name']);
+	if (isset($dependency['alt-code']))
 	{
 		$names = [];
-		for ($i = 0; $i < count($library['alt-code']); ++$i)
-			$names[] = generateLibraryLink($library['alt-code'][$i], $library['alt-name'][$i]);
+		for ($i = 0; $i < count($dependency['alt-code']); ++$i)
+			$names[] = generateDependencyLink($dependency['alt-code'][$i], $dependency['alt-name'][$i]);
 		echo "<br/>(" . implode(" / ", $names) . ")";
 	}
 	echo "</th>\n";
 }
 echo "</tr>\n";
 
-// Horizontal Header: Library Version
+// Horizontal Header: Dependency Version
 echo "<tr>\n";
 echo "\t<th colspan='3'><b>Min. Required Version</b></th>\n";
-foreach ($c_Libraries as $library)
+foreach ($c_Dependencies as $dependency)
 {
 	echo "\t<th>";
-	if (isset($library['minRequired']))
-		echo $library['minRequired'];
+	if (isset($dependency['minRequired']))
+		echo $dependency['minRequired'];
 	echo "</th>\n";
 }
 echo "</tr>\n";
@@ -95,20 +95,20 @@ foreach ($c_Distros as $distro)
 
 		echo "\t<td><center>" . getEOL($distro) . "</center></td>\n";
 
-		foreach ($c_Libraries as $library)
+		foreach ($c_Dependencies as $dependency)
 		{
-			$minRequired = isset($library['minRequired']) ? $library['minRequired'] : False;
+			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
 			echo "\t<td><center>";
-			echo generateImageLink($distro['code'], $library['code'], $minRequired);
+			echo generateImageLink($distro['code'], $dependency['code'], $minRequired);
 			
-			if (isset($library['alt-code']) and
-				(isset($library['always-show-alt']) and $library['always-show-alt'] or
-				isset($distro['alt']) and in_array($library['code'], $distro['alt'])))
+			if (isset($dependency['alt-code']) and
+				(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
+				isset($distro['alt']) and in_array($dependency['code'], $distro['alt'])))
 			{
 				$versions = array_map(function ($c) {
 					global $distro;
 					return generateImageLink($distro['code'], $c);
-				}, $library['alt-code']);
+				}, $dependency['alt-code']);
 				echo " (" . implode(" / ", $versions) . ")";
 			}
 			echo "</center></td>\n";
@@ -131,37 +131,37 @@ foreach ($c_Distros as $distro)
 		echo "\t<th><i>" . generateDistroReleaseLink($release) . "</i></th>\n";
 		echo "\t<td><center>" . getEOL($release) . "</center></td>\n";
 
-		foreach ($c_Libraries as $library)
+		foreach ($c_Dependencies as $dependency)
 		{
-			$minRequired = isset($library['minRequired']) ? $library['minRequired'] : False;
+			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
 			echo "\t<td><center>";
 			if (isset($release['code']))
 			{
-				echo generateImageLink($release['code'], $library['code'], $minRequired);
-				if (isset($library['alt-code']) and
-					(isset($library['always-show-alt']) and $library['always-show-alt'] or
-					isset($release['alt']) and in_array($library['code'], $release['alt'])))
+				echo generateImageLink($release['code'], $dependency['code'], $minRequired);
+				if (isset($dependency['alt-code']) and
+					(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
+					isset($release['alt']) and in_array($dependency['code'], $release['alt'])))
 				{
 					$versions = array_map(function ($c) {
 						global $release;
 						return generateImageLink($release['code'], $c);
-					}, $library['alt-code']);
+					}, $dependency['alt-code']);
 					echo " (" . implode(" / ", $versions) . ")";
 				}
 			}
 			else
 			{
-				if (isset($release['hard'][$library['code']]))
-					echo $release['hard'][$library['code']];
+				if (isset($release['hard'][$dependency['code']]))
+					echo $release['hard'][$dependency['code']];
 				else
 					echo "-";
 
-				if (isset($release['alt']) and isset($library['alt-code']) and in_array($library['code'], $release['alt']))
+				if (isset($release['alt']) and isset($dependency['alt-code']) and in_array($dependency['code'], $release['alt']))
 				{
 					$versions = [];
-					for ($i = 0; $i < count($library['alt-code']); ++$i)
-						if (isset($release['hard'][$library['alt-code'][$i]]))
-							$versions[] = $release['hard'][$library['alt-code'][$i]];
+					for ($i = 0; $i < count($dependency['alt-code']); ++$i)
+						if (isset($release['hard'][$dependency['alt-code'][$i]]))
+							$versions[] = $release['hard'][$dependency['alt-code'][$i]];
 						else
 							$versions[] = "-";
 					echo " (" . implode(" / ", $versions) . ")";
