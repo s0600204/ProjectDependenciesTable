@@ -15,18 +15,18 @@ foreach ($c_Distros as $distro)
 	else
 		$g_DistroList[] = $distro['code'];
 
-$g_LibraryList = array();
-foreach ($c_Libraries as $library)
+$g_DependencyList = array();
+foreach ($c_Dependencies as $dependency)
 {
-	$g_LibraryList[] = $library['code'];
-	if (isset($library['alt-code']))
-		foreach ($library['alt-code'] as $code)
-			$g_LibraryList[] = $code;
+	$g_DependencyList[] = $dependency['code'];
+	if (isset($dependency['alt-code']))
+		foreach ($dependency['alt-code'] as $code)
+			$g_DependencyList[] = $code;
 }
 
-foreach ($g_LibraryList as $library)
+foreach ($g_DependencyList as $dependency_code)
 {
-	curl_setopt($g_ch, CURLOPT_URL, "https://repology.org/api/v1/project/" . $library);
+	curl_setopt($g_ch, CURLOPT_URL, "https://repology.org/api/v1/project/" . $dependency_code);
 	$response = curl_exec($g_ch);
 
 	if (curl_errno($g_ch))
@@ -48,19 +48,19 @@ foreach ($g_LibraryList as $library)
 		if (in_array($package['status'], array('rolling', 'legacy')))
 			continue;
 
-		if ($package['status'] == 'newest' && !isset($g_LatestVersions[$library]))
-			$g_LatestVersions[$library] = $package['version'];
+		if ($package['status'] == 'newest' && !isset($g_LatestVersions[$dependency_code]))
+			$g_LatestVersions[$dependency_code] = $package['version'];
 
 		if (in_array($package['repo'], $g_DistroList))
 		{
 			$distro = $package['repo'];
 			if (!isset($g_VersionsByDistro[$distro]))
-				$g_VersionsByDistro[$distro] = array($library => $package['version']);
-			else if (!isset($g_VersionsByDistro[$distro][$library])
-				|| (version_compare($g_VersionsByDistro[$distro][$library], $package['version']) == -1 && $package['status'] != 'ignored')
+				$g_VersionsByDistro[$distro] = array($dependency_code => $package['version']);
+			else if (!isset($g_VersionsByDistro[$distro][$dependency_code])
+				|| (version_compare($g_VersionsByDistro[$distro][$dependency_code], $package['version']) == -1 && $package['status'] != 'ignored')
 				|| $package['status'] == 'newest')
 			{
-				$g_VersionsByDistro[$distro][$library] = $package['version'];
+				$g_VersionsByDistro[$distro][$dependency_code] = $package['version'];
 			}
 		}
 	}

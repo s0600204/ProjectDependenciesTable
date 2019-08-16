@@ -1,12 +1,5 @@
 <?php
 
-function generateImageLink ($repoCode, $dependencyCode, $minRequired = False)
-{
-	if ($minRequired)
-		return "<img src='https://repology.org/badge/version-only-for-repo/" . $repoCode . "/" . $dependencyCode . ".svg?minversion=" . $minRequired . "' style='vertical-align: middle'/>";
-	return "<img src='https://repology.org/badge/version-only-for-repo/" . $repoCode . "/" . $dependencyCode . ".svg' style='vertical-align: middle'/>";
-}
-
 function generateGenericLink($addr, $text)
 {
 	return "<a href='$addr' class='ext-link'><span class='icon'></span>" . $text . "</a>";
@@ -22,6 +15,33 @@ function generateDistroReleaseLink($distro)
 	if (isset($distro['link']))
 		return generateGenericLink($distro['link'], $distro['name']);
 	return $distro['name'];
+}
+
+function generateVersionText($dependency_code, $distro_code, $minRequired = False)
+{
+	global $g_LatestVersions;
+	global $g_VersionsByDistro;
+	if (!isset($g_VersionsByDistro[$distro_code]) || !isset($g_VersionsByDistro[$distro_code][$dependency_code]))
+		return '<span class="version notavailable"><span>-</span></span>';
+
+	switch (version_compare($g_VersionsByDistro[$distro_code][$dependency_code], $g_LatestVersions[$dependency_code]))
+	{
+	case -1: // Old
+		if ($minRequired && version_compare($g_VersionsByDistro[$distro_code][$dependency_code], $minRequired) == -1)
+			$class = "lessthanminimum";
+		else
+			$class = "oldversion";
+		break;
+
+	case 0: // Latest
+		$class = "latestversion";
+		break;
+
+	case 1: // Newer
+		$class = "nonstandardversion";
+		break;
+	}
+	return '<span class="version ' . $class . '"><span>' . $g_VersionsByDistro[$distro_code][$dependency_code] . '</span></span>';
 }
 
 function getEOL($distro)
@@ -99,15 +119,15 @@ foreach ($c_Distros as $distro)
 		{
 			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
 			echo "\t<td><center>";
-			echo generateImageLink($distro['code'], $dependency['code'], $minRequired);
+
+			echo generateVersionText($dependency['code'], $distro['code'], $minRequired);
 			
 			if (isset($dependency['alt-code']) and
 				(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
 				isset($distro['alt']) and in_array($dependency['code'], $distro['alt'])))
 			{
-				$versions = array_map(function ($c) {
-					global $distro;
-					return generateImageLink($distro['code'], $c);
+				$versions = array_map(function ($code) use ($distro) {
+					return generateVersionText($code, $distro['code']);
 				}, $dependency['alt-code']);
 				echo " (" . implode(" / ", $versions) . ")";
 			}
@@ -137,14 +157,14 @@ foreach ($c_Distros as $distro)
 			echo "\t<td><center>";
 			if (isset($release['code']))
 			{
-				echo generateImageLink($release['code'], $dependency['code'], $minRequired);
+				echo generateVersionText($dependency['code'], $release['code'], $minRequired);
+
 				if (isset($dependency['alt-code']) and
 					(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
 					isset($release['alt']) and in_array($dependency['code'], $release['alt'])))
 				{
-					$versions = array_map(function ($c) {
-						global $release;
-						return generateImageLink($release['code'], $c);
+					$versions = array_map(function ($code) use ($release) {
+						return generateVersionText($code, $release['code']);
 					}, $dependency['alt-code']);
 					echo " (" . implode(" / ", $versions) . ")";
 				}

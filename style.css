@@ -31,3 +31,45 @@ span.icon::before {
 	padding-right: 0.2em;
 }
 */
+
+span.version {
+	border-radius: 3px;
+	color: #fff;
+	display: inline-block;
+	font-family: sans-serif;
+	font-size: 0.75em;
+	padding: 0;
+	vertical-align: middle;
+}
+
+span.version>span {
+	background:linear-gradient(rgba(186,186,186,.1), rgba(0,0,0,.1));
+	border-radius: 3px;
+	display: inline-block;
+	padding: 0.25em 0.5em;
+}
+
+span.notavailable {
+	background: #555;
+}
+
+span.lessthanminimum {
+	background: #e00000;
+}
+
+span.oldversion {
+	background: #e05d44;
+}
+
+span.latestversion {
+	background: #4c1;
+}
+
+span.newerversion {
+	background: #00a040;
+}
+
+span.nonstandardversion {
+	background: #9f9f9f;
+}
+
