@@ -1,4 +1,5 @@
 <?php
+require_once './utils.php';
 
 function generateGenericLink($addr, $text)
 {
@@ -72,7 +73,7 @@ echo "<tr>\n";
 echo "\t<th colspan='3'><b>Dependencies</b></th>\n";
 foreach ($c_Dependencies as $dependency)
 {
-	echo "\t<th>";
+	echo "\t<th id='dep__" . $dependency['code'] . "'>";
 	echo generateDependencyLink($dependency['code'], $dependency['name']);
 	if (isset($dependency['alt-code']))
 	{
@@ -110,7 +111,7 @@ foreach ($c_Distros as $distro)
 	// No separate releases
 	if (!isset($distro['releases']))
 	{
-		echo "<tr>\n";
+		echo "<tr id='distro__" . $distro['code'] . "'>\n";
 		echo "\t<th colspan='2'>" . generateDistroReleaseLink($distro) . "</th>\n";
 
 		echo "\t<td><center>" . getEOL($distro) . "</center></td>\n";
@@ -121,7 +122,10 @@ foreach ($c_Distros as $distro)
 			echo "\t<td><center>";
 
 			echo generateVersionText($dependency['code'], $distro['code'], $minRequired);
-			
+
+			if (isset($dependency['alt-code']))
+				echo " <span></span>";
+/*
 			if (isset($dependency['alt-code']) and
 				(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
 				isset($distro['alt']) and in_array($dependency['code'], $distro['alt'])))
@@ -131,6 +135,7 @@ foreach ($c_Distros as $distro)
 				}, $dependency['alt-code']);
 				echo " (" . implode(" / ", $versions) . ")";
 			}
+*/
 			echo "</center></td>\n";
 		}
 		echo "</tr>\n";
@@ -138,14 +143,19 @@ foreach ($c_Distros as $distro)
 	}
 
 	// Separate releases
-	echo "<tr>\n";
+	echo "<tr id='distro__" . $distro['releases'][0]['code'] . "'>\n";
 	echo "\t<th rowspan='" . count($distro['releases']) . "'>" . generateDistroReleaseLink($distro) . "</th>\n";
 
 	$first = True;
 	foreach ($distro["releases"] as $release)
 	{
 		if (!$first)
-			echo "<tr>\n";
+		{
+			echo "<tr";
+			if (isset($release['code']))
+				echo " id='distro__" . $release['code'] . "'";
+			echo ">\n";
+		}
 		$first = False;
 
 		echo "\t<th><i>" . generateDistroReleaseLink($release) . "</i></th>\n";
@@ -159,6 +169,9 @@ foreach ($c_Distros as $distro)
 			{
 				echo generateVersionText($dependency['code'], $release['code'], $minRequired);
 
+				if (isset($dependency['alt-code']))
+					echo " <span></span>";
+/*
 				if (isset($dependency['alt-code']) and
 					(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
 					isset($release['alt']) and in_array($dependency['code'], $release['alt'])))
@@ -167,7 +180,7 @@ foreach ($c_Distros as $distro)
 						return generateVersionText($code, $release['code']);
 					}, $dependency['alt-code']);
 					echo " (" . implode(" / ", $versions) . ")";
-				}
+				}	*/
 			}
 			else
 			{

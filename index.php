@@ -7,9 +7,10 @@
 	<link href="style.css" rel="stylesheet"/>
 	<?php include "./data/consts.php"; ?>
 	<?php include "./process.php"; ?>
+	<script src="script.js"></script>
 </head>
 
-<body>
+<body onload="init()">
 
 <table class="wiki">
 <?php include "./draw.php"; ?>
