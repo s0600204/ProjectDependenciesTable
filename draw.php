@@ -24,10 +24,10 @@ function generateVersionText($dependency_code, $distro_code, $minRequired = Fals
 	if (!isset($g_VersionsByDistro[$distro_code]) || !isset($g_VersionsByDistro[$distro_code][$dependency_code]))
 		return '<span class="version notavailable"><span>-</span></span>';
 
-	switch (version_compare($g_VersionsByDistro[$distro_code][$dependency_code], $g_LatestVersions[$dependency_code]))
+	switch (version_compare2($g_VersionsByDistro[$distro_code][$dependency_code], $g_LatestVersions[$dependency_code]))
 	{
 	case -1: // Old
-		if ($minRequired && version_compare($g_VersionsByDistro[$distro_code][$dependency_code], $minRequired) == -1)
+		if ($minRequired && version_compare2($g_VersionsByDistro[$distro_code][$dependency_code], $minRequired) == -1)
 			$class = "lessthanminimum";
 		else
 			$class = "oldversion";
