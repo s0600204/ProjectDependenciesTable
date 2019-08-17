@@ -16,6 +16,10 @@
 <?php include "./draw.php"; ?>
 </table>
 
+<template id="version_template">
+	<span class="version"><span></span></span>
+</template>
+
 <p>This table uses the <a href="https://repology.org/">Repology (https://repology.org/)</a> version tracking service, and thus versions displayed should be automatically kept up-to-date. Incorrect versions should be reported to them.</p>
 
 <dl>

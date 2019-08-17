@@ -82,22 +82,33 @@ function populate_versions(version_info)
 	let latest = version_info.latestVersion;
 	for (let distro of g_DistroList)
 	{
-		if (!versions[distro])
-			continue;
-
 		let row = document.getElementById('distro__' + distro);
 		let col = column - 2;
 		if (row.children[0].rowSpan > 1)
 			++col;
 
+		let cell = row.children[col].children[0];
+		let altdeps = cell.querySelector('.altdeps');
+
+		if (g_DependencyAlts[version_info.code] && !altdeps)
+			continue;
+
+		let new_element = create_version_element(
+			versions[distro] || '-',
+			version_info.states[distro] || 'notavailable'
+		);
+
 		if (!g_DependencyAlts[version_info.code])
-		{
-			row.children[col].children[0].children[0].classList.replace('notavailable', version_info.states[distro]);
-			row.children[col].children[0].children[0].children[0].innerText = versions[distro];
-		}
+			cell.insertBefore(new_element, altdeps);
 		else
-		{
-			row.children[col].children[0].children[1].innerText += versions[distro];
-		}
+			altdeps.appendChild(new_element);
 	}
+}
+
+function create_version_element(version_text, status_class)
+{
+	let vers_elem = document.importNode(document.getElementById('version_template').content, true);
+	vers_elem.children[0].classList.add(status_class);
+	vers_elem.children[0].children[0].innerText = version_text;
+	return vers_elem;
 }

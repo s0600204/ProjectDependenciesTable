@@ -73,3 +73,10 @@ span.nonstandardversion {
 	background: #9f9f9f;
 }
 
+span.altdeps:not(:empty)::before {
+	content: "(";
+}
+
+span.altdeps:not(:empty)::after {
+	content: ")";
+}

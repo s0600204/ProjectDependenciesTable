@@ -121,21 +121,13 @@ foreach ($c_Distros as $distro)
 			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
 			echo "\t<td><center>";
 
-			echo generateVersionText($dependency['code'], $distro['code'], $minRequired);
-
-			if (isset($dependency['alt-code']))
-				echo " <span></span>";
-/*
 			if (isset($dependency['alt-code']) and
 				(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
 				isset($distro['alt']) and in_array($dependency['code'], $distro['alt'])))
 			{
-				$versions = array_map(function ($code) use ($distro) {
-					return generateVersionText($code, $distro['code']);
-				}, $dependency['alt-code']);
-				echo " (" . implode(" / ", $versions) . ")";
+				echo "<span class='altdeps'></span>";
 			}
-*/
+
 			echo "</center></td>\n";
 		}
 		echo "</tr>\n";
@@ -167,20 +159,12 @@ foreach ($c_Distros as $distro)
 			echo "\t<td><center>";
 			if (isset($release['code']))
 			{
-				echo generateVersionText($dependency['code'], $release['code'], $minRequired);
-
-				if (isset($dependency['alt-code']))
-					echo " <span></span>";
-/*
 				if (isset($dependency['alt-code']) and
 					(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
 					isset($release['alt']) and in_array($dependency['code'], $release['alt'])))
 				{
-					$versions = array_map(function ($code) use ($release) {
-						return generateVersionText($code, $release['code']);
-					}, $dependency['alt-code']);
-					echo " (" . implode(" / ", $versions) . ")";
-				}	*/
+					echo "<span class='altdeps'></span>";
+				}
 			}
 			else
 			{
