@@ -66,6 +66,26 @@ foreach ($response as $package)
 	}
 }
 
+$distros = load_json(__DIR__ . "/data/distros.json");
+foreach ($distros as $distro)
+{
+	if (!isset($distro['releases']))
+	{
+		if (isset($distro['hard'])
+			&& isset($distro['hard'][$dependency_code])
+		)
+			$versionsByDistro[md5($distro['name'])] = $distro['hard'][$dependency_code];
+		continue;
+	}
+
+	foreach ($distro['releases'] as $release)
+		if (!isset($release['code'])
+			&& isset($release['hard'])
+			&& isset($release['hard'][$dependency_code])
+		)
+			$versionsByDistro[md5($release['name'])] = $release['hard'][$dependency_code];
+}
+
 ksort($versionsByDistro);
 
 $versionState = array();

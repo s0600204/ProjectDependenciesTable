@@ -1,5 +1,17 @@
 <?php
 
+function load_json ($file) {
+	$fcontents = json_decode(file_get_contents($file), true);
+
+	if ($fcontents !== NULL)
+		return $fcontents;
+	else
+	{
+		error_log($file . " is not a valid JSON file!");
+		return array();
+	}
+};
+
 /**
  * `version_compare` considers `1`, `1.0`, and `1.0.0` to be unequal in
  * ascending order of greatness. This, then, removes all trailing '.0' from

@@ -8,9 +8,13 @@ foreach ($c_Distros as $distro)
 		foreach ($distro['releases'] as $release)
 			if (isset($release['code']))
 				$distroList[] = $release['code'];
+			else
+				$distroList[] = md5($release['name']);
 	}
 	else if (isset($distro['code']))
 		$distroList[] = $distro['code'];
+	else
+		$distroList[] = md5($distro['name']);
 
 $dependencyList = array();
 $dependencyAlts = array();

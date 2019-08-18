@@ -111,6 +111,11 @@ foreach ($c_Distros as $distro)
 	// No separate releases
 	if (!isset($distro['releases']))
 	{
+		// This supports distros that don't have a repology code, but have
+		// hard-coded versions stored in the distros.json file instead.
+		if (!isset($distro['code']))
+			$distro['code'] = md5($distro['name']);
+
 		echo "<tr id='distro__" . $distro['code'] . "'>\n";
 		echo "\t<th colspan='2'>" . generateDistroReleaseLink($distro) . "</th>\n";
 
@@ -141,13 +146,14 @@ foreach ($c_Distros as $distro)
 	$first = True;
 	foreach ($distro["releases"] as $release)
 	{
+		// This supports releases that don't have a repology code, but have
+		// hard-coded versions stored in the distros.json file instead.
+		if (!isset($release['code']))
+			$release['code'] = md5($release['name']);
+
 		if (!$first)
-		{
-			echo "<tr";
-			if (isset($release['code']))
-				echo " id='distro__" . $release['code'] . "'";
-			echo ">\n";
-		}
+			echo "<tr id='distro__" . $release['code'] . "'>\n";
+
 		$first = False;
 
 		echo "\t<th><i>" . generateDistroReleaseLink($release) . "</i></th>\n";
@@ -157,33 +163,14 @@ foreach ($c_Distros as $distro)
 		{
 			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
 			echo "\t<td><center>";
-			if (isset($release['code']))
-			{
-				if (isset($dependency['alt-code']) and
-					(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
-					isset($release['alt']) and in_array($dependency['code'], $release['alt'])))
-				{
-					echo "<span class='altdeps'></span>";
-				}
-			}
-			else
-			{
-				if (isset($release['hard'][$dependency['code']]))
-					echo $release['hard'][$dependency['code']];
-				else
-					echo "-";
 
-				if (isset($release['alt']) and isset($dependency['alt-code']) and in_array($dependency['code'], $release['alt']))
-				{
-					$versions = [];
-					for ($i = 0; $i < count($dependency['alt-code']); ++$i)
-						if (isset($release['hard'][$dependency['alt-code'][$i]]))
-							$versions[] = $release['hard'][$dependency['alt-code'][$i]];
-						else
-							$versions[] = "-";
-					echo " (" . implode(" / ", $versions) . ")";
-				}
+			if (isset($dependency['alt-code']) and
+				(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
+				isset($release['alt']) and in_array($dependency['code'], $release['alt'])))
+			{
+				echo "<span class='altdeps'></span>";
 			}
+
 			echo "</center></td>\n";
 		}
 		echo "</tr>\n";
