@@ -87,7 +87,7 @@ function populate_versions(version_info)
 		if (row.children[0].rowSpan > 1)
 			++col;
 
-		let cell = row.children[col].children[0];
+		let cell = row.children[col];
 		let altdeps = cell.querySelector('.altdeps');
 
 		if (g_DependencyAlts[version_info.code] && !altdeps)

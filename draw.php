@@ -119,12 +119,12 @@ foreach ($c_Distros as $distro)
 		echo "<tr id='distro__" . $distro['code'] . "'>\n";
 		echo "\t<th colspan='2'>" . generateDistroReleaseLink($distro) . "</th>\n";
 
-		echo "\t<td><center>" . getEOL($distro) . "</center></td>\n";
+		echo "\t<td>" . getEOL($distro) . "</td>\n";
 
 		foreach ($c_Dependencies as $dependency)
 		{
 			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
-			echo "\t<td><center>";
+			echo "\t<td>";
 
 			if (isset($dependency['alt-code']) and
 				(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
@@ -133,7 +133,7 @@ foreach ($c_Distros as $distro)
 				echo "<span class='altdeps'></span>";
 			}
 
-			echo "</center></td>\n";
+			echo "</td>\n";
 		}
 		echo "</tr>\n";
 		continue;
@@ -157,12 +157,12 @@ foreach ($c_Distros as $distro)
 		$first = False;
 
 		echo "\t<th><i>" . generateDistroReleaseLink($release) . "</i></th>\n";
-		echo "\t<td><center>" . getEOL($release) . "</center></td>\n";
+		echo "\t<td>" . getEOL($release) . "</td>\n";
 
 		foreach ($c_Dependencies as $dependency)
 		{
 			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
-			echo "\t<td><center>";
+			echo "\t<td>";
 
 			if (isset($dependency['alt-code']) and
 				(isset($dependency['always-show-alt']) and $dependency['always-show-alt'] or
@@ -171,7 +171,7 @@ foreach ($c_Distros as $distro)
 				echo "<span class='altdeps'></span>";
 			}
 
-			echo "</center></td>\n";
+			echo "</td>\n";
 		}
 		echo "</tr>\n";
 	}
