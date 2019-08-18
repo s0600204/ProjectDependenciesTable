@@ -112,3 +112,8 @@ function create_version_element(version_text, status_class)
 	vers_elem.children[0].children[0].innerText = version_text;
 	return vers_elem;
 }
+
+function toggleInfo() {
+	let infobox = document.getElementById('infobox');
+	infobox.style.display = window.getComputedStyle(infobox).display === "none" ?  "block" : "none";
+}

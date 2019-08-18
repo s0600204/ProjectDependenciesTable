@@ -23,6 +23,14 @@ table.wiki td, table.wiki th {
 	padding: 0.1em 0.2em;
 }
 
+dl {
+	margin: 2px;
+}
+
+dd:not(:last-child) {
+	margin-bottom: 1em;
+}
+
 /*
 span.icon::before {
 	content: "\1F517";
@@ -79,4 +87,37 @@ span.altdeps:not(:empty)::before {
 
 span.altdeps:not(:empty)::after {
 	content: ")";
+}
+
+div {
+	position: fixed;
+}
+
+#toolbar {
+	font-size: 1.5em;
+	right: 4px;
+	top: 4px;
+}
+
+#infobox {
+	background: rgba(255, 255, 255, 0.9);
+	border: solid rgb(136,136,136) 1px;
+	display: none;
+	font-size: 1em;
+	max-width: 33%;
+	padding: 2px;
+	right: 4px;
+	top: 2em;
+}
+
+fieldset {
+	border: solid rgb(136,136,136) 1px;
+	margin: 2px;
+	padding: 2px;
+	text-align: left;
+}
+
+#infobox p {
+	padding: 0;
+	margin: 4px 2px;
 }
