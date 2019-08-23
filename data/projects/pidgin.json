@@ -1,0 +1,105 @@
+{
+	"name": "Pidgin",
+	"code": "pidgin",
+	"url": "http://pidgin.im/",
+
+	"dependencies": {
+		"2.x": [
+			{
+				"name": "Autoconf",
+				"code": "autoconf",
+				"minRequired": "2.5"
+			}, {
+				"name": "Automake",
+				"code": "automake"
+			}, {
+				"name": "Farstream",
+				"code": "farstream",
+				"alt-name": ["Farsight"],
+				"alt-code": ["farsight2"],
+				"always-show-alt": true
+			}, {
+				"name": "GLib",
+				"code": "glib",
+				"minRequired": "2.16"
+			}, {
+				"name": "GStreamer v1.x",
+				"code": "gstreamer1",
+				"minRequired": "1.0",
+				"alt-name": ["GStreamer v0.1x"],
+				"alt-code": ["gstreamer"],
+				"always-show-alt": true
+			}, {
+				"name": "GTK+2",
+				"code": "gtk2",
+				"minRequired": "2.10",
+				"alt-name": ["GTK+3"],
+				"alt-code": ["gtk3"],
+				"always-show-alt": true
+			}, {
+				"name": "intltool",
+				"code": "intltool"
+			}, {
+				"name": "JSON-GLib",
+				"code": "json-glib",
+				"minRequired": "0.14"
+			}, {
+				"name": "libtool",
+				"code": "libtool"
+			}, {
+				"name": "libxml2",
+				"code": "libxml2",
+				"minRequired": "2.6"
+			}, {
+				"name": "WebKitGTK+",
+				"code": "webkitgtk",
+				"minRequired": "1.3.7"
+			}
+		],
+		"3.x": [
+			{
+				"name": "Farstream",
+				"code": "farstream",
+				"minRequired": "0.2.7"
+			}, {
+				"name": "GLib",
+				"code": "glib",
+				"minRequired": "2.4"
+			}, {
+				"name": "gplugin",
+				"code": "gplugin",
+				"minRequired": "0.27"
+			}, {
+				"name": "GStreamer v1.x",
+				"code": "gstreamer1",
+				"minRequired": "1.0"
+			}, {
+				"name": "GTK+3",
+				"code": "gtk3",
+				"minRequired": "1.10"
+			}, {
+				"name": "intltool",
+				"code": "intltool"
+			}, {
+				"name": "JSON-GLib",
+				"code": "json-glib",
+				"minRequired": "0.14"
+			}, {
+				"name": "libxml2",
+				"code": "libxml2",
+				"minRequired": "2.6"
+			}, {
+				"name": "Meson",
+				"code": "meson",
+				"minRequired": "0.37"
+			}, {
+				"name": "ninja",
+				"code": "ninja"
+			}, {
+				"name": "WebKitGTK+",
+				"code": "webkitgtk",
+				"minRequired": "1.3.7"
+			}
+		]
+	}
+}

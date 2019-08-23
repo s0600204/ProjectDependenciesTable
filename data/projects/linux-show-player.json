@@ -1,0 +1,65 @@
+{
+	"name": "Linux Show Player",
+	"code": "linux-show-player",
+	"url": "https://github.com/FrancescoCeruti/linux-show-player",
+
+	"dependencies": {
+		"main": [
+			{
+				"name": "GStreamer v1.x plugins: good",
+				"code": "gstreamer1plugins:good",
+				"alt-name": ["GStreamer v0.1x plugins: good"],
+				"alt-code": ["gstreamer0plugins:good"],
+				"always-show-alt": true
+			}, {
+				"name": "ola",
+				"code": "ola"
+			}, {
+				"name": "python-falcon",
+				"code": "python:falcon"
+			}, {
+				"name": "python-gobject",
+				"code": "python:pygobject3"
+			}, {
+				"name": "python-pyliblo",
+				"code": "python:pyliblo"
+			}, {
+				"name": "python-mido",
+				"code": "python:mido"
+			}, {
+				"name": "python-pyqt5",
+				"code": "python:pyqt5"
+			}, {
+				"name": "python-requests",
+				"code": "python:requests"
+			}, {
+				"name": "python-rtmidi",
+				"code": "python:rtmidi"
+			}, {
+				"name": "python-sortedcontainers",
+				"code": "python:sortedcontainers"
+			}, {
+				"name": "qt5-svg",
+				"code": "qt5"
+			}
+		],
+		"make": [
+			{
+				"name": "python-setuptools",
+				"code": "python:setuptools"
+			}
+		],
+		"optional": [
+			{
+				"name": "gst-libav",
+				"code": "gstreamer1plugins:libav"
+			}, {
+				"name": "portmidi",
+				"code": "portmidi"
+			}, {
+				"name": "python-jack-client",
+				"code": "python:jack-client"
+			}
+		]
+	}
+}

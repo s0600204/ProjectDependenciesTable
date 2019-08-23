@@ -1,0 +1,111 @@
+{
+	"name": "0 A.D. Empires Ascendant",
+	"code": "0ad",
+	"url": "https://play0ad.com",
+
+	"dependencies": {
+		"main": [
+			{
+				"name": "Boost",
+				"code": "boost",
+				"minRequired": "1.57"
+			}, {
+				"name": "CMake",
+				"code": "cmake"
+			}, {
+				"name": "gcc",
+				"code": "gcc",
+				"minRequired": "4.8.1"
+			}, {
+				"name": "libcurl",
+				"code": "curl",
+				"minRequired": "7.32"
+			}, {
+				"name": "libenet",
+				"code": "enet",
+				"minRequired": "1.3"
+			}, {
+				"name": "libGL",
+				"code": "libglvnd",
+				"alt-name": ["mesa-libgl"],
+				"alt-code": ["mesa"],
+				"always-show-alt": false
+			}, {
+				"name": "libgloox",
+				"code": "gloox",
+				"minRequired": "1.0.10"
+			}, {
+				"name": "libicu",
+				"code": "icu"
+			}, {
+				"name": "libnspr4",
+				"code": "nspr",
+				"alt-name": ["mozilla-nss"],
+				"alt-code": ["nss"]
+			}, {
+				"name": "libogg",
+				"code": "libogg"
+			}, {
+				"name": "libpng",
+				"code": "libpng"
+			}, {
+				"name": "libsodium",
+				"code": "libsodium",
+				"minRequired": "1.0.14"
+			}, {
+				"name": "libvorbis",
+				"code": "libvorbis"
+			}, {
+				"name": "libxcursor",
+				"code": "libxcursor"
+			}, {
+				"name": "libxml2",
+				"code": "libxml2"
+			}, {
+				"name": "miniupnpc",
+				"code": "miniupnpc",
+				"minRequired": "1.0.6"
+			}, {
+				"name": "OpenAL",
+				"code": "openal-soft"
+			}, {
+				"name": "SDL2",
+				"code": "sdl2",
+				"minRequired": "2.0.2"
+			}, {
+				"name": "subversion",
+				"code": "subversion"
+			}, {
+				"name": "wxwidgets",
+				"code": "wxwidgets"
+			}, {
+				"name": "zlib",
+				"code": "zlib"
+			}
+		],
+		"fonts": [
+			{
+				"name": "LinuxLibertine",
+				"code": "fonts:linuxlibertine"
+			}, {
+				"name": "FreeFont",
+				"code": "fonts:gnu-freefont"
+			}, {
+				"name": "DejaVu",
+				"code": "fonts:dejavu"
+			}, {
+				"name": "TeX Gyre",
+				"code": "tex-gyre",
+				"alt-name": ["TeX Gyre Fonts"],
+				"alt-code": ["tex-gyre-fonts"],
+				"always-show-alt": false
+			}, {
+				"name": "Hanazono",
+				"code": "fonts:hanazono"
+			}, {
+				"name": "Source-Han-Sans",
+				"code": "fonts:source-han-sans"
+			}
+		]
+	}
+}
