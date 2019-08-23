@@ -28,6 +28,10 @@ dl {
 	margin: 2px;
 }
 
+dt {
+	font-weight: bold;
+}
+
 dd:not(:last-child) {
 	margin-bottom: 1em;
 }
@@ -47,6 +51,7 @@ span.version {
 	display: inline-block;
 	font-family: sans-serif;
 	font-size: 0.75em;
+	font-weight: normal;
 	padding: 0;
 	vertical-align: middle;
 }
@@ -95,12 +100,20 @@ div {
 }
 
 #toolbar {
+	background: rgba(255, 255, 255, 0.9);
+	border: solid rgb(136,136,136);
+	border-width: 0 0 1px 1px;
 	font-size: 1.5em;
-	right: 4px;
-	top: 4px;
+	padding: 4px 4px 0 2px;
+	right: 0;
+	top: 0;
 }
 
-#infobox {
+#toolbar span {
+	cursor: pointer;
+}
+
+.toolbox {
 	background: rgba(255, 255, 255, 0.9);
 	border: solid rgb(136,136,136) 1px;
 	display: none;
@@ -118,7 +131,7 @@ fieldset {
 	text-align: left;
 }
 
-#infobox p {
+.toolbox p {
 	padding: 0;
 	margin: 4px 2px;
 }

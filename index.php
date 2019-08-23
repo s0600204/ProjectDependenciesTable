@@ -6,6 +6,7 @@
 	<title>Project Dependencies</title>
 	<link href="style.css" rel="stylesheet"/>
 	<?php include "./data/consts.php"; ?>
+	<?php include "./data/projects.php"; ?>
 	<?php include "./process.php"; ?>
 	<script src="script.js"></script>
 </head>
@@ -13,10 +14,31 @@
 <body onload="init()">
 
 <div id="toolbar">
-	<span onclick="toggleInfo()">&#128712;</span>
+	<span onclick="toggleBoxes('projectsbox')">&#128736;</span>
+	<span onclick="toggleBoxes('infobox')">&#128712;</span>
 </div>
 
-<div id="infobox">
+<div id="projectsbox" class="toolbox">
+	<fieldset>
+		<legend><b>Projects</b></legend>
+		<dl>
+<?php
+		foreach ($c_Projects as $code => $project)
+		{
+			echo "\t\t<dt><a href='".$project['url']."' target='_new'>" . $project['name'] . "</a></dt>\n";
+			echo "\t\t<dd>";
+			$sections = array();
+			foreach ($project['sections'] as $section)
+				$sections[] = "<a href='?project=".$code."&section=".$section."'>" . $section . "</a>";
+			echo implode(" &#9702; ", $sections); // &#8226;
+			echo "</dd>\n\n";
+		}
+?>
+		</dl>
+	</fieldset>
+</div>
+
+<div id="infobox" class="toolbox">
 	<fieldset>
 		<legend><b>Key</b></legend>
 		<dl>

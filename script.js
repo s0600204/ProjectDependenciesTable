@@ -113,7 +113,11 @@ function create_version_element(version_text, status_class)
 	return vers_elem;
 }
 
-function toggleInfo() {
-	let infobox = document.getElementById('infobox');
-	infobox.style.display = window.getComputedStyle(infobox).display === "none" ?  "block" : "none";
+function toggleBoxes(selected) {
+	let boxes = ['infobox', 'projectsbox'];
+	for (let boxid of boxes)
+	{
+		box_elem = document.getElementById(boxid);
+		box_elem.style.display = (selected == boxid && window.getComputedStyle(box_elem).display === "none") ?  "block" : "none";
+	}
 }
