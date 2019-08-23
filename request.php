@@ -8,9 +8,57 @@ if (!isset($_POST['dep_code'])
 	exit;
 }
 
+function determineVersionStates($versions, $latest, $minimum)
+{
+	$states = array();
+	foreach ($versions as $distro => $version)
+	{
+		switch(version_compare2($version, $latest))
+		{
+		case -1: // Old
+			if ($minimum && version_compare2($version, $minimum) == -1)
+				$class = "lessthanminimum";
+			else
+				$class = "oldversion";
+			break;
+
+		case 0: // Latest
+			$class = "latestversion";
+			break;
+
+		case 1: // Newer
+		default:
+			$class = "nonstandardversion";
+			break;
+		}
+		$states[$distro] = $class;
+	}
+	return $states;
+}
+
 $dependency_code = $_POST['dep_code'];
 $min_required = isset($_POST['min_req']) ? $_POST['min_req'] : False;
 
+// Load from cache, if it exists and isn't too old.
+$cache_filename = './data/cache/' . $dependency_code . '.json';
+$cache_ttl = 60 * 60; // seconds in one hour.
+if (file_exists($cache_filename) && time() - $cache_ttl < filemtime($cache_filename))
+{
+	$fh = fopen($cache_filename, 'r');
+	if ($fh)
+	{
+		$content = fread($fh, filesize($cache_filename));
+		fclose($fh);
+
+		$content = json_decode($content, True);
+		$content['states'] = determineVersionStates($content['versions'], $content['latestVersion'], $min_required);
+		echo json_encode($content);
+
+		exit;
+	}
+}
+
+// Else, request it from Repology
 $ch = curl_init();
 curl_setopt_array($ch, array(
 	CURLOPT_HEADER => False,
@@ -88,36 +136,22 @@ foreach ($distros as $distro)
 
 ksort($versionsByDistro);
 
-$versionState = array();
-foreach ($versionsByDistro as $distro => $version)
-{
-	switch(version_compare2($version, $latestVersion))
-	{
-	case -1: // Old
-		if ($min_required && version_compare2($version, $min_required) == -1)
-			$class = "lessthanminimum";
-		else
-			$class = "oldversion";
-		break;
-
-	case 0: // Latest
-		$class = "latestversion";
-		break;
-
-	case 1: // Newer
-	default:
-		$class = "nonstandardversion";
-		break;
-	}
-	$versionState[$distro] = $class;
-}
-
-echo json_encode(array(
+$output = json_encode(array(
 	"code" => $dependency_code,
 	"status" => True,
 	"latestVersion" => $latestVersion,
 	"versions" => $versionsByDistro,
-	"states" => $versionState,
+	"states" => determineVersionStates($versionsByDistro, $latestVersion, $min_required),
 ));
+
+echo $output;
+
+// Save in cache, overwriting previous cachefile (if one exists).
+$fh = fopen($cache_filename, 'w');
+if ($fh)
+{
+	fwrite($fh, $output);
+	fclose($fh);
+}
 
 ?>
