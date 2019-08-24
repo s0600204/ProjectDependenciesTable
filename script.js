@@ -55,7 +55,6 @@ function init()
 {
 	for (let dependency of g_DependencyList)
 	{
-		console.log(dependency);
 		let args = {
 			'dep_code': dependency
 		}
@@ -75,7 +74,7 @@ function populate_versions(version_info)
 
 	let header_cell = document.getElementById('dep__' + version_info.code);
 	if (g_DependencyAlts[version_info.code])
-		header_cell = document.getElementById('dep__' + g_DependencyAlts[version_info.code].orig);
+		header_cell = document.getElementById('dep__' + g_DependencyAlts[version_info.code]);
 	let column = header_cell.cellIndex + header_cell.parentElement.children[0].colSpan;
 
 	let versions = version_info.versions;

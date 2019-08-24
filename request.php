@@ -44,16 +44,11 @@ $cache_filename = './data/cache/' . $dependency_code . '.json';
 $cache_ttl = 60 * 60; // seconds in one hour.
 if (file_exists($cache_filename) && time() - $cache_ttl < filemtime($cache_filename))
 {
-	$fh = fopen($cache_filename, 'r');
-	if ($fh)
+	$content = load_json($cache_filename);
+	if ($content)
 	{
-		$content = fread($fh, filesize($cache_filename));
-		fclose($fh);
-
-		$content = json_decode($content, True);
 		$content['states'] = determineVersionStates($content['versions'], $content['latestVersion'], $min_required);
 		echo json_encode($content);
-
 		exit;
 	}
 }
@@ -100,7 +95,7 @@ $latestVersion = NULL;
 
 foreach ($response as $package)
 {
-	if (in_array($package['status'], array('rolling', 'legacy')))
+	if (in_array($package['status'], array('rolling', 'legacy', 'ignored')))
 		continue;
 
 	if ($package['status'] == 'newest')
@@ -136,22 +131,17 @@ foreach ($distros as $distro)
 
 ksort($versionsByDistro);
 
-$output = json_encode(array(
+$output = array(
 	"code" => $dependency_code,
 	"status" => True,
 	"latestVersion" => $latestVersion,
 	"versions" => $versionsByDistro,
-	"states" => determineVersionStates($versionsByDistro, $latestVersion, $min_required),
-));
-
-echo $output;
+);
 
 // Save in cache, overwriting previous cachefile (if one exists).
-$fh = fopen($cache_filename, 'w');
-if ($fh)
-{
-	fwrite($fh, $output);
-	fclose($fh);
-}
+file_put_contents($cache_filename, json_encode($output));
+
+$output["states"] = determineVersionStates($versionsByDistro, $latestVersion, $min_required);
+echo json_encode($output);
 
 ?>

@@ -71,7 +71,7 @@ function getEOL($distro)
 // Horizontal Header: Dependency Name
 echo "<tr>\n";
 echo "\t<th colspan='3'><b>Dependencies</b></th>\n";
-foreach ($c_Dependencies as $dependency)
+foreach ($g_Dependencies as $dependency)
 {
 	echo "\t<th id='dep__" . $dependency['code'] . "'>";
 	echo generateDependencyLink($dependency['code'], $dependency['name']);
@@ -89,7 +89,7 @@ echo "</tr>\n";
 // Horizontal Header: Dependency Version
 echo "<tr>\n";
 echo "\t<th colspan='3'><b>Min. Required Version</b></th>\n";
-foreach ($c_Dependencies as $dependency)
+foreach ($g_Dependencies as $dependency)
 {
 	echo "\t<th>";
 	if (isset($dependency['minRequired']))
@@ -104,7 +104,7 @@ echo "\t<th><b>EOL</b></th>\n";
 echo "</tr>\n";
 
 // Repo Entries
-foreach ($c_Distros as $distro)
+foreach ($g_Distros as $distro)
 {
 	echo "\n<!-- " . strtoupper($distro['name']) . "-->\n";
 
@@ -121,7 +121,7 @@ foreach ($c_Distros as $distro)
 
 		echo "\t<td>" . getEOL($distro) . "</td>\n";
 
-		foreach ($c_Dependencies as $dependency)
+		foreach ($g_Dependencies as $dependency)
 		{
 			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
 			echo "\t<td>";
@@ -159,7 +159,7 @@ foreach ($c_Distros as $distro)
 		echo "\t<th><i>" . generateDistroReleaseLink($release) . "</i></th>\n";
 		echo "\t<td>" . getEOL($release) . "</td>\n";
 
-		foreach ($c_Dependencies as $dependency)
+		foreach ($g_Dependencies as $dependency)
 		{
 			$minRequired = isset($dependency['minRequired']) ? $dependency['minRequired'] : False;
 			echo "\t<td>";

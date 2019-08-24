@@ -2,7 +2,7 @@
 require_once './utils.php';
 
 $distroList = array();
-foreach ($c_Distros as $distro)
+foreach ($g_Distros as $distro)
 	if (isset($distro['releases']))
 	{
 		foreach ($distro['releases'] as $release)
@@ -19,7 +19,7 @@ foreach ($c_Distros as $distro)
 $dependencyList = array();
 $dependencyAlts = array();
 $dependencyReqs = array();
-foreach ($c_Dependencies as $dependency)
+foreach ($g_Dependencies as $dependency)
 {
 	$dependencyList[] = $dependency['code'];
 	if (isset($dependency['minRequired']))
@@ -28,10 +28,7 @@ foreach ($c_Dependencies as $dependency)
 		foreach ($dependency['alt-code'] as $code)
 		{
 			$dependencyList[] = $code;
-			$dependencyAlts[$code] = array(
-				"orig" => $dependency['code'],
-				"show" => true
-			);
+			$dependencyAlts[$code] = $dependency['code'];
 		}
 }
 

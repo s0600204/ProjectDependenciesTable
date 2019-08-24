@@ -22,7 +22,7 @@
 		<legend><b>Projects</b></legend>
 		<dl>
 <?php
-		foreach ($c_Projects as $code => $project)
+		foreach ($g_Projects as $code => $project)
 		{
 			echo "\t\t<dt><a href='".$project['url']."' target='_new'>" . $project['name'] . "</a></dt>\n";
 			echo "\t\t<dd>";
