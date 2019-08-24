@@ -93,8 +93,8 @@ function populate_versions(version_info)
 			continue;
 
 		let new_element = create_version_element(
-			versions[distro] || '-',
-			version_info.states[distro] || 'notavailable'
+			versions[distro] || { 'v': '-', 's': 'notavailable' },
+			version_info.states[distro]
 		);
 
 		if (!g_DependencyAlts[version_info.code])
@@ -104,11 +104,11 @@ function populate_versions(version_info)
 	}
 }
 
-function create_version_element(version_text, status_class)
+function create_version_element(version_info, status_class)
 {
 	let vers_elem = document.importNode(document.getElementById('version_template').content, true);
-	vers_elem.children[0].classList.add(status_class);
-	vers_elem.children[0].children[0].innerText = version_text;
+	vers_elem.children[0].classList.add(status_class || version_info['s'] || '');
+	vers_elem.children[0].children[0].innerText = version_info['v'];
 	return vers_elem;
 }
 

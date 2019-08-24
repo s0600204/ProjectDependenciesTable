@@ -79,27 +79,31 @@ span.version>span {
 	padding: 0.25em 0.5em;
 }
 
-span.notavailable {
+span.version.notavailable {
 	background: #555;
 }
 
-span.lessthanminimum {
+span.version.lessthanmin {
 	background: #e00000;
 }
 
-span.oldversion {
+span.version.old {
 	background: #e05d44;
 }
 
-span.latestversion {
+span.version.latest {
 	background: #4c1;
 }
 
-span.newerversion {
+span.version.newer {
+	background: #5bbc9d;
+}
+
+span.version.newer2 {
 	background: #00a040;
 }
 
-span.nonstandardversion {
+span.version.nonstandard {
 	background: #9f9f9f;
 }
 

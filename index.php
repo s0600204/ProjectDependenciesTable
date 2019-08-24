@@ -44,22 +44,27 @@
 	<fieldset>
 		<legend><b>Key</b></legend>
 		<dl>
-		<dt><span class="version lessthanminimum">
+		<dt><span class="version lessthanmin">
 			<span>Bright Red/Scarlet</span>
 		</span></dt>
 		<dd>Package provided does not meet the project's minimum required version.</dd>
 
-		<dt><span class="version oldversion">
+		<dt><span class="version old">
 			<span>Faded Red</span>
 		</span></dt>
-		<dd>Package provided is not the latest stable release (as determined by <i>Repology</i>).</dd>
+		<dd>Package provided is an old stable release.</dd>
 
-		<dt><span class="version latestversion">
+		<dt><span class="version latest">
 			<span>Green</span>
 		</span></dt>
-		<dd>Package provided is the latest stable release (as determined by <i>Repology</i>).</dd>
+		<dd>Package provided is the latest stable release.</dd>
 
-		<dt><span class="version nonstandardversion">
+		<dt><span class="version newer">
+			<span>Turquoise</span>
+		</span></dt>
+		<dd>Package provided is a development release.</dd>
+
+		<dt><span class="version nonstandard">
 			<span>Light Grey</span>
 		</span></dt>
 		<dd>Package provided has a non-standard version.</dd>

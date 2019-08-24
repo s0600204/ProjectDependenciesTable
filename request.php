@@ -11,27 +11,37 @@ if (!isset($_POST['dep_code'])
 function determineVersionStates($versions, $latest, $minimum)
 {
 	$states = array();
-	foreach ($versions as $distro => $version)
+	foreach ($versions as $distro => $version_info)
 	{
-		switch(version_compare2($version, $latest))
+		$class = NULL;
+
+		if (!isset($version_info['s']))
 		{
-		case -1: // Old
-			if ($minimum && version_compare2($version, $minimum) == -1)
-				$class = "lessthanminimum";
-			else
-				$class = "oldversion";
-			break;
+			switch(version_compare2($version_info['v'], $latest))
+			{
+			case -1:
+				$class = 'old';
+				break;
 
-		case 0: // Latest
-			$class = "latestversion";
-			break;
+			case 0:
+				$class = 'latest';
+				break;
 
-		case 1: // Newer
-		default:
-			$class = "nonstandardversion";
-			break;
+			case 1:
+				$class = 'newer';
+				break;
+
+			default:
+				$class = 'nonstandard';
+				break;
+			}
 		}
-		$states[$distro] = $class;
+
+		if ($minimum && version_compare2($version_info['v'], $minimum) == -1)
+			$class = 'lessthanmin';
+
+		if ($class)
+			$states[$distro] = $class;
 	}
 	return $states;
 }
@@ -95,17 +105,32 @@ $latestVersion = NULL;
 
 foreach ($response as $package)
 {
-	if (in_array($package['status'], array('rolling', 'legacy', 'ignored')))
+	if (in_array($package['status'], array('rolling', 'legacy', 'untrusted', 'incorrect', 'ignored')))
 		continue;
 
-	if ($package['status'] == 'newest')
+	if (in_array($package['status'], array('newest', 'unique')))
 		$latestVersion = $package['version'];
 
 	$distro = $package['repo'];
 	if (!isset($versionsByDistro[$distro])
-		|| version_compare2($package['version'], $versionsByDistro[$distro]) == 1)
+		|| version_compare2($package['version'], $versionsByDistro[$distro]['v']) == 1)
 	{
-		$versionsByDistro[$distro] = $package['version'];
+		$versionsByDistro[$distro] = array('v' => $package['version']);
+		switch ($package['status'])
+		{
+		case 'newest':
+		case 'unique':
+			$versionsByDistro[$distro]['s'] = 'latest';
+			break;
+		case 'outdated':
+			$versionsByDistro[$distro]['s'] = 'old';
+			break;
+		case 'devel':
+			$versionsByDistro[$distro]['s'] = 'newer';
+			break;
+		default:
+			error_log('The `'.$dependency_code.'` in the `'.$distro.'` repo has a status of `'.$package['status'].'`');
+		}
 	}
 }
 
@@ -117,7 +142,7 @@ foreach ($distros as $distro)
 		if (isset($distro['hard'])
 			&& isset($distro['hard'][$dependency_code])
 		)
-			$versionsByDistro[md5($distro['name'])] = $distro['hard'][$dependency_code];
+			$versionsByDistro[md5($distro['name'])] = array('v' => $distro['hard'][$dependency_code]);
 		continue;
 	}
 
@@ -126,7 +151,7 @@ foreach ($distros as $distro)
 			&& isset($release['hard'])
 			&& isset($release['hard'][$dependency_code])
 		)
-			$versionsByDistro[md5($release['name'])] = $release['hard'][$dependency_code];
+			$versionsByDistro[md5($release['name'])] = array('v' => $release['hard'][$dependency_code]);
 }
 
 ksort($versionsByDistro);
