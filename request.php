@@ -134,6 +134,35 @@ foreach ($response as $package)
 	}
 }
 
+// Load from Python Package Index
+if (stripos($dependency_code, 'python:') === 0)
+{
+	$python_code = substr($dependency_code, 7);
+
+	curl_setopt_array($ch, array(
+		CURLOPT_HEADER => False,
+		CURLOPT_RETURNTRANSFER => True,
+		CURLOPT_FOLLOWLOCATION => True,
+		CURLOPT_URL => "https://pypi.org/pypi/" . $python_code . "/json"
+	));
+
+	$response = curl_exec($ch);
+	if (curl_errno($ch))
+		error_log("Error in cURL whilst processing request:\n\t" . curl_error($ch));
+	else
+	{
+		$response_code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+		if ($response_code != 200)
+			error_log("Recieved following response code from PyPI: " . $response_code);
+		else
+		{
+			$response = json_decode($response, true);
+			if (!empty($response))
+				$versionsByDistro[md5("Python Package Index")] = array('v' => $response['info']['version']);
+		}
+	}
+}
+
 $distros = load_json(__DIR__ . "/data/distros.json");
 foreach ($distros as $distro)
 {

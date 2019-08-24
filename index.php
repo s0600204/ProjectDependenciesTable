@@ -77,7 +77,8 @@
 	</fieldset>
 	<fieldset>
 		<legend><b>Attribution</b></legend>
-		<p>The data shown in this table originates from the <a href="https://repology.org/" target="_new">Repology (https://repology.org/)</a> version tracking service.</p>
+		<p>The data shown in this table primarily originates from the <a href="https://repology.org/" target="_new">Repology (https://repology.org/)</a> version tracking service.</p>
+		<p>Version data from the <a href="https://pypi.org/" target="_new">Python Package Index</a> is obtained <a href="https://pypi.org/help/#APIs" target="_new">via API</a> directly.</p>
 		<p>This page was inspired by the <a href="https://d.pidgin.im/wiki/Dependencies/3.0.0" target="_new">dependencies page</a> for <i>Pidgeon 3.0.0</i>.</p>
 	</fieldset>
 	<fieldset>

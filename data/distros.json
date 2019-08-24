@@ -146,6 +146,11 @@
 		}]
 	},
 	{
+		"name": "Python Package Index",
+		"link": "https://pypi.org/",
+		"eol": "inf"
+	},
+	{
 		"name": "Raspbian",
 		"link": "https://www.raspbian.org/",
 		"releases": [{
