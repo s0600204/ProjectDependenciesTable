@@ -6,13 +6,13 @@ $g_Distros = load_json(__DIR__ . "/distros.json");
 $g_ProjectsPath = './data/projects/';
 $g_Projects = array();
 
-$selected_project_code = NULL;
+$g_ProjectCode = NULL;
 if (isset($_GET['project']) && mb_detect_encoding($_GET['project'], 'ASCII', true))
-	$selected_project_code = $_GET['project'];
+	$g_ProjectCode = $_GET['project'];
 
-$selected_project_section = NULL;
+$g_SelectedSection = NULL;
 if (isset($_GET['section']) && mb_detect_encoding($_GET['section'], 'ASCII', true))
-	$selected_project_section = $_GET['section'];
+	$g_SelectedSection = $_GET['section'];
 
 foreach (scandir($g_ProjectsPath, SCANDIR_SORT_ASCENDING) as $filename)
 {
@@ -34,17 +34,15 @@ foreach (scandir($g_ProjectsPath, SCANDIR_SORT_ASCENDING) as $filename)
 	);
 }
 
-if (!$selected_project_code || !in_array($selected_project_code, array_keys($g_Projects)))
-	$selected_project_code = array_keys($g_Projects)[rand(0, count($g_Projects) - 1)];
+if (!$g_ProjectCode || !in_array($g_ProjectCode, array_keys($g_Projects)))
+	$g_ProjectCode = array_keys($g_Projects)[rand(0, count($g_Projects) - 1)];
 
-$project = load_json($g_ProjectsPath . $selected_project_code . '.json');
-if (in_array($selected_project_section, $g_Projects[$selected_project_code]['sections']))
-	$g_Dependencies = $project['dependencies'][$selected_project_section];
+$project = load_json($g_ProjectsPath . $g_ProjectCode . '.json');
+if (in_array($g_SelectedSection, $g_Projects[$g_ProjectCode]['sections']))
+	$g_Dependencies = $project['dependencies'][$g_SelectedSection];
 else
-	$g_Dependencies = $project['dependencies'][$g_Projects[$selected_project_code]['sections'][0]];
+	$g_Dependencies = $project['dependencies'][$g_Projects[$g_ProjectCode]['sections'][0]];
 
 unset($project);
-unset($selected_project_code);
-unset($selected_project_section);
 
 ?>

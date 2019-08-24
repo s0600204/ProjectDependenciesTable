@@ -24,6 +24,22 @@ table.wiki td, table.wiki th {
 	text-align: center;
 }
 
+hgroup h1, hgroup h2 {
+	display: inline-block;
+	margin: 0;
+	margin-bottom: 8px;
+	padding: 0;
+}
+
+hgroup h1 {
+	font-size: 2em;
+}
+
+hgroup h2 {
+	font-size: 1.2em;
+	margin-left: 0.5em;
+}
+
 dl {
 	margin: 2px;
 }

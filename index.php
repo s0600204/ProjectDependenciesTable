@@ -3,11 +3,11 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-	<title>Project Dependencies</title>
 	<link href="style.css" rel="stylesheet"/>
 	<?php include "./data/projects.php"; ?>
 	<?php include "./process.php"; ?>
 	<script src="script.js"></script>
+	<title>Project Dependencies :: <?=$g_Projects[$g_ProjectCode]['name']?></title>
 </head>
 
 <body onload="init()">
@@ -28,7 +28,10 @@
 			echo "\t\t<dd>";
 			$sections = array();
 			foreach ($project['sections'] as $section)
-				$sections[] = "<a href='?project=".$code."&section=".$section."'>" . $section . "</a>";
+				if ($code == $g_ProjectCode && $section == $g_SelectedSection)
+					$sections[] = $section;
+				else
+					$sections[] = "<a href='?project=".$code."&section=".$section."'>" . $section . "</a>";
 			echo implode(" &#9702; ", $sections); // &#8226;
 			echo "</dd>\n\n";
 		}
@@ -82,6 +85,19 @@
 		<p>I am not responsible for the content or security of external links. (And all links on this page are external.)</p>
 	</fieldset>
 </div>
+
+<hgroup>
+<h1><?=$g_Projects[$g_ProjectCode]['name']?></h1>
+<h2><?php
+	$sections = array();
+	foreach ($g_Projects[$g_ProjectCode]['sections'] as $section)
+		if ($section == $g_SelectedSection)
+			$sections[] = $section;
+		else
+			$sections[] = "<a href='?project=".$g_ProjectCode."&section=".$section."'>" . $section . "</a>";
+	echo implode(" &#9702; ", $sections); // &#8226;
+?></h2>
+</hgroup>
 
 <table class="wiki">
 <?php include "./draw.php"; ?>
