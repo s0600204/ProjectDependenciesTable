@@ -1,7 +1,0 @@
-[
-	{
-		"name": "gcc",
-		"code": "gcc",
-		"minRequired": "4.8.1"
-	}
-]

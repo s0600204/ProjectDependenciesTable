@@ -1,4 +1,7 @@
 <?php
+require_once './utils.php';
+
+$c_Distros = load_json(__DIR__ . "/distros.json");
 
 $selected_project_code = NULL;
 $selected_project_section = NULL;

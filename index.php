@@ -5,7 +5,6 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 	<title>Project Dependencies</title>
 	<link href="style.css" rel="stylesheet"/>
-	<?php include "./data/consts.php"; ?>
 	<?php include "./data/projects.php"; ?>
 	<?php include "./process.php"; ?>
 	<script src="script.js"></script>
