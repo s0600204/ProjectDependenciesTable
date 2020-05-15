@@ -10,16 +10,16 @@ An example of the end result can be found at: http://s06eye.co.uk/0ad/linuxDeps.
 Guide
 -----
 
-The script reads from two data files:
+The script reads from several files, which may be found in the data subdirectory:
 
-* ``dependencies.json`` - lists all dependencies of the project
-* ``distros.json`` - defines which distributions should be listed
+* ``data/distros.json`` - defines which distributions should be listed
+* ``data/projects/{project_name}.json`` - lists the dependencies of a given project
 
 
-``dependencies.json``
-''''''''''''''''''
+``{project_name}.json``
+'''''''''''''''''''''''
 
-Within ``dependencies.json``, dependencies are defined like so::
+Within each ``{project_name}.json`` data file, dependencies are defined like so::
 
 	{
 		"name": "<name>",
@@ -27,6 +27,21 @@ Within ``dependencies.json``, dependencies are defined like so::
 	}
 
 where ``<name>`` is the name of the dependency, and ``<code>`` is the code that Repology_ uses to identify the relevant package (in many cases both ``<name>`` and ``<code>`` may be identical).
+
+These dependency definitions are not top-level objects, however: they are grouped like so::
+
+	"dependencies": {
+		"<section_name>": [
+			{
+				"name": "<name>",
+				"code": "<code>"
+			}, {
+				...
+			}
+		]
+	}
+
+where ``<section_name>`` is the name of a section, such as "main", "v1.x", or "make".
 
 If your project requires a minimum version of a dependency, this may be set by the use of the optional ``minRequired`` key, thusly::
 
@@ -36,9 +51,9 @@ If your project requires a minimum version of a dependency, this may be set by t
 		"minRequired": "4.8.1"
 	}
 
-Sometimes there may be dependencies that are packaged differently in different repositories. For instance, ``libnspr4`` is commonly packaged in its own package within many repositories. However there are some cases where it is bundled up with other libraries that all originating from the same codebase.
+Sometimes there may be dependencies that are packaged differently in different repositories. For instance, ``libnspr4`` is commonly packaged in its own package within many repositories. However there are some cases where it is bundled up with other libraries that all originate from the same codebase.
 
-To express this, the definition of the ``nspr`` dependency looks like this, where the "alt-" prefixed keys detail the alternate package::
+To express this, a definition of the ``nspr`` dependency might look like this, where the "alt-" prefixed keys detail the alternate package::
 
 	{
 		"name": "libnspr4",
@@ -47,7 +62,7 @@ To express this, the definition of the ``nspr`` dependency looks like this, wher
 		"alt-code": ["nss"]
 	},
 
-There is an optional key - ``always-show-alt`` - which if provided and set to ``true`` will cause the alternate dependency to be queried for and the result displayed for *all* distributions in the final table. If it is not provided, or is set to its default value of ``false``, the alternate dependency will only be queried for and appear for those repositories where it has been explicitly flagged that the alternate dependency is needed.
+There is an optional key - ``always-show-alt`` - which if provided and set to ``true`` will cause the alternate dependency to be displayed for *all* distributions in the final table. If it is not provided, or is set to its default value of ``false``, the alternate dependency will only appear for those repositories where it has been explicitly flagged that the alternate dependency is needed.
 
 
 ``distros.json``
@@ -123,7 +138,7 @@ Whilst for distributions that release in discrete iterations, it looks something
 ``alt``
 	Optional.
 
-	If it is known that a distro's repository uses an alternative package for a given dependency (see the section on "alt-" prefixed keys in libraries.json_ above), then this may be flagged by adding the (non-alternate) dependency's code to the list here.
+	If it is known that a distro's repository uses an alternative package for a given dependency (see the section on "alt-" prefixed keys in {project_name}.json_ above), then this may be flagged by adding the (non-alternate) dependency's code to the list here.
 
 ``hard``
 	Optional.
@@ -136,9 +151,7 @@ Known or Potential Issues
 -------------------------
 
 Server load
-	Each version badge is a seperate request to the Repology_ servers. Whilst each badge is ``.svg`` and may not have a large filesize, there are a lot of requests. I don't know what (if any) load balancing the Repology_ service uses, so I'm not sure how much this page stresses the Repology_ service.
-
-	For now, the Repology_ does not charge for its use, enforce usage limits, nor require the use of API keys. If the number of requests exceed the point where its maintainers are happy, then this might change.
+	For now, the Repology_ does not charge for its use, enforce usage limits, nor require the use of API keys. I don't know what (if any) load balancing the Repology_ service uses, so I'm not sure how much this page stresses the Repology_ service. If the number of requests exceed the point where its maintainers are happy, then this might change.
 
 
 
