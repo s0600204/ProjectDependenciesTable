@@ -6,11 +6,8 @@
 	"dependencies": {
 		"main": [
 			{
-				"name": "GStreamer v1.x plugins: good",
-				"code": "gstreamer1plugins:good",
-				"alt-name": ["GStreamer v0.1x plugins: good"],
-				"alt-code": ["gstreamer0plugins:good"],
-				"always-show-alt": true
+				"name": "GStreamer plugins: good",
+				"code": "gstreamer:good"
 			}, {
 				"name": "ola",
 				"code": "ola"
@@ -40,7 +37,7 @@
 				"code": "python:sortedcontainers"
 			}, {
 				"name": "qt5-svg",
-				"code": "qt5"
+				"code": "qt"
 			}
 		],
 		"make": [
@@ -52,7 +49,7 @@
 		"optional": [
 			{
 				"name": "gst-libav",
-				"code": "gstreamer1plugins:libav"
+				"code": "gstreamer:libav"
 			}, {
 				"name": "portmidi",
 				"code": "portmidi"

@@ -21,8 +21,8 @@
 				"code": "doxygen",
 				"name": "doxygen"
 			}, {
-				"code": "eigen3",
-				"name": "eigen3"
+				"code": "eigen",
+				"name": "eigen"
 			}, {
 				"code": "expat",
 				"name": "expat"
@@ -129,10 +129,10 @@
 				"code": "python:shiboken2",
 				"name": "python:shiboken2"
 			}, {
-				"code": "python3",
+				"code": "python",
 				"name": "python3"
 			}, {
-				"code": "qt5",
+				"code": "qt",
 				"name": "qt5"
 			}, {
 				"code": "simage",

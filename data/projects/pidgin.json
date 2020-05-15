@@ -23,19 +23,13 @@
 				"code": "glib",
 				"minRequired": "2.16"
 			}, {
-				"name": "GStreamer v1.x",
-				"code": "gstreamer1",
-				"minRequired": "1.0",
-				"alt-name": ["GStreamer v0.1x"],
-				"alt-code": ["gstreamer"],
-				"always-show-alt": true
+				"name": "GStreamer",
+				"code": "gstreamer",
+				"minRequired": "1.0"
 			}, {
-				"name": "GTK+2",
-				"code": "gtk2",
-				"minRequired": "2.10",
-				"alt-name": ["GTK+3"],
-				"alt-code": ["gtk3"],
-				"always-show-alt": true
+				"name": "GTK",
+				"code": "gtk",
+				"minRequired": "2.10"
 			}, {
 				"name": "intltool",
 				"code": "intltool"
@@ -70,13 +64,13 @@
 				"code": "gplugin",
 				"minRequired": "0.27"
 			}, {
-				"name": "GStreamer v1.x",
-				"code": "gstreamer1",
+				"name": "GStreamer",
+				"code": "gstreamer",
 				"minRequired": "1.0"
 			}, {
 				"name": "GTK+3",
-				"code": "gtk3",
-				"minRequired": "1.10"
+				"code": "gtk",
+				"minRequired": "3.10"
 			}, {
 				"name": "intltool",
 				"code": "intltool"
