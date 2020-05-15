@@ -1,7 +1,7 @@
 {
 	"name": "Linux Show Player",
 	"code": "linux-show-player",
-	"url": "https://github.com/FrancescoCeruti/linux-show-player",
+	"url": "https://www.linux-show-player.org/",
 
 	"dependencies": {
 		"main": [
