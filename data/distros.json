@@ -9,26 +9,25 @@
 	{
 		"name": "Debian",
 		"releases": [{
-			"name": "Jessie (oldstable)",
+			"name": "Stretch (oldstable)",
 			"code": "debian_oldstable",
-			"link": "https://packages.debian.org/oldstable/",
-			"eol": "2018-06-06",
-			"alt": ["libglvnd"]
-		}, {
-			"name": "Stretch (stable)",
-			"code": "debian_stable",
-			"link": "https://packages.debian.org/stable/",
+			"link": "https://packages.debian.org/stretch/",
 			"eol": "2020",
 			"alt": ["libglvnd"]
 		}, {
+			"name": "Buster (stable)",
+			"code": "debian_stable",
+			"link": "https://packages.debian.org/buster/",
+			"eol": "2022"
+		}, {
 			"name": "(stable backports)",
 			"code": "debian_stable_backports",
-			"link": "https://packages.debian.org/stable-backports/",
-			"eol": "2020"
+			"link": "https://packages.debian.org/buster-backports/",
+			"eol": "2022"
 		}, {
-			"name": "Buster (testing)",
+			"name": "Bullseye (testing)",
 			"code": "debian_testing",
-			"link": "https://packages.debian.org/testing/"
+			"link": "https://packages.debian.org/bullseye/"
 		}, {
 			"name": "Sid (unstable)",
 			"code": "debian_unstable",
@@ -88,6 +87,14 @@
 			"code": "fedora_30",
 			"eol": "2020-06"
 		}, {
+			"name": "31",
+			"code": "fedora_31",
+			"eol": "2020-11"
+		}, {
+			"name": "32",
+			"code": "fedora_32",
+			"eol": "2021-05"
+		}, {
 			"name": "Rawhide",
 			"code": "fedora_rawhide",
 			"eol": "inf"
@@ -138,6 +145,10 @@
 			"code": "opensuse_leap_15_1",
 			"alt": ["nspr"],
 			"eol": "2020-11"
+		}, {
+			"name": "Leap 15.2",
+			"code": "opensuse_leap_15_2",
+			"alt": ["nspr"]
 		}, {
 			"name": "Tumbleweed",
 			"code": "opensuse_tumbleweed",
@@ -206,19 +217,38 @@
 			"eol": "2023-04",
 			"link": "https://packages.ubuntu.com/bionic/"
 		}, {
-			"name": "Cosmic (18.10)",
-			"code": "ubuntu_18_10",
-			"eol": "2019-07",
-			"link": "https://packages.ubuntu.com/cosmic/"
-		}, {
-			"name": "Disco (19.04)",
-			"code": "ubuntu_19_04",
-			"eol": "2020-01",
-			"link": "https://packages.ubuntu.com/disco/"
-		}, {
 			"name": "Eoan (19.10)",
 			"code": "ubuntu_19_10",
+			"eol": "2020-07",
 			"link": "https://packages.ubuntu.com/eoan/"
+		}, {
+			"name": "Focal (20.04)",
+			"code": "ubuntu_20_04",
+			"eol": "2025-04",
+			"link": "https://packages.ubuntu.com/focal/"
+		}, {
+			"name": "Groovy (20.10)",
+			"code": "ubuntu_20_10",
+			"eol": "2021-07",
+			"link": "https://packages.ubuntu.com/groovy/"
+		}, {
+			"name": "0 A.D. PPA",
+			"link": "https://launchpad.net/~wfg/+archive/ubuntu/0ad.dev/+packages",
+			"eol": "inf",
+			"hard": {
+				"boost": "1.58",
+				"debhelper": "10.2.2",
+				"enet": "1.3.12",
+				"gloox": "1.0.20",
+				"libsodium": "1.0.16",
+				"mozjs38": "38.8.0",
+				"nvtt": "2.0.8"
+			}
 		}]
+	},
+	{
+		"name": "Void Linux",
+		"link": "https://voidlinux.org/",
+		"code": "void_x86_64"
 	}
 ]
