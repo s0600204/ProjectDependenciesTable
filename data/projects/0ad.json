@@ -4,7 +4,7 @@
 	"url": "https://play0ad.com",
 
 	"dependencies": {
-		"main": [
+		"0.0.24": [
 			{
 				"name": "Boost",
 				"code": "boost",
@@ -81,6 +81,49 @@
 			}, {
 				"name": "zlib",
 				"code": "zlib"
+			}
+		],
+		"<--": [
+			{
+				"name": "fmt",
+				"code": "fmt",
+				"minRequired": "4.0"
+			}
+		],
+		"system/bundled": [
+			{
+				"name": "nvtt",
+				"code": "nvidia-texture-tools",
+				"minRequired": "2.1.0"
+			}, {
+				"name": "premake",
+				"code": "premake",
+				"alt-name": ["premake5"],
+				"alt-code": ["premake5"],
+				"minRequired": "5.0a",
+				"always-show-alt": false
+			}, {
+				"name": "spidermonkey",
+				"code": "spidermonkey",
+				"minRequired": "45.0.2"
+			}
+		],
+		"bundled": [
+			{
+				"name": "cxxtest",
+				"code": "cxxtest"
+			}, {
+				"name": "fcollada",
+				"code": "fcollada"
+			}, {
+				"name": "premake-cxxtest",
+				"code": "premake:cxxtest"
+			}, {
+				"name": "premake-pkgconfig",
+				"code": "premake:pkgconfig"
+			}, {
+				"name": "valgrind",
+				"code": "valgrind"
 			}
 		],
 		"fonts": [

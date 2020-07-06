@@ -103,7 +103,8 @@
 	{
 		"name": "FreeBSD",
 		"code": "freebsd",
-		"link": "https://www.freebsd.org/"
+		"link": "https://www.freebsd.org/",
+		"alt": ["premake"]
 	},
 	{
 		"name": "Gentoo",
@@ -249,6 +250,21 @@
 	{
 		"name": "Void Linux",
 		"link": "https://voidlinux.org/",
-		"code": "void_x86_64"
+		"code": "void_x86_64",
+		"alt": ["premake"]
+	},
+	{
+		"name": "0 A.D. Bundled",
+		"eol": "inf",
+		"hard": {
+			"cxxtest": "4.4",
+			"fcollada": "3.05-patched",
+			"nvidia-texture-tools": "2.1.1-patched",
+			"premake": "5.0.0-alpha13",
+			"premake:cxxtest": "1.0.0-dev",
+			"premake:pkgconfig": "1.1.0-dev",
+			"spidermonkey": "45.0.2",
+			"valgrind": "3.8"
+		}
 	}
 ]
