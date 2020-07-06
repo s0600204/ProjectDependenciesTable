@@ -89,20 +89,10 @@ if ($response_code != 200)
 	exit;
 }
 
-$response = json_decode($response, true);
-
-if (empty($response))
-{
-	echo json_encode(array(
-		"code" => $dependency_code,
-		"status" => False
-	));
-	exit;
-}
-
 $versionsByDistro = array();
 $latestVersion = NULL;
 
+$response = json_decode($response, true);
 foreach ($response as $package)
 {
 	if (in_array($package['status'], array('rolling', 'legacy', 'untrusted', 'incorrect', 'ignored')))
