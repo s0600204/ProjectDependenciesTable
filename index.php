@@ -24,7 +24,7 @@
 <?php
 		foreach ($g_Projects as $code => $project)
 		{
-			echo "\t\t<dt><a href='".$project['url']."' target='_new'>" . $project['name'] . "</a></dt>\n";
+			echo "\t\t<dt><a href='".$project['url']."' target='_new' class='ext'>" . $project['name'] . "</a></dt>\n";
 			echo "\t\t<dd>";
 			$sections = array();
 			foreach ($project['sections'] as $section)
