@@ -15,6 +15,23 @@
 		}]
 	},
 	{
+		"name": "CentOS",
+		"link": "https://www.centos.org/",
+		"releases": [{
+			"name": "6",
+			"code": "centos_6",
+			"link": "http://mirror.centos.org/centos-6/6/",
+			"eol": "2020-11",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "7",
+			"code": "centos_7",
+			"link": "http://mirror.centos.org/centos-7/7/",
+			"eol": "2024-06",
+			"alt": ["libglvnd"]
+		}]
+	},
+	{
 		"name": "Debian",
 		"releases": [{
 			"name": "Stretch (oldstable)",
@@ -41,23 +58,6 @@
 			"code": "debian_unstable",
 			"link": "https://packages.debian.org/unstable/",
 			"eol": "inf"
-		}]
-	},
-	{
-		"name": "CentOS",
-		"link": "https://www.centos.org/",
-		"releases": [{
-			"name": "6",
-			"code": "centos_6",
-			"link": "http://mirror.centos.org/centos-6/6/",
-			"eol": "2020-11",
-			"alt": ["libglvnd"]
-		}, {
-			"name": "7",
-			"code": "centos_7",
-			"link": "http://mirror.centos.org/centos-7/7/",
-			"eol": "2024-06",
-			"alt": ["libglvnd"]
 		}]
 	},
 	{
