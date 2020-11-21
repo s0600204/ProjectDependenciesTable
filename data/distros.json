@@ -29,6 +29,12 @@
 			"link": "http://mirror.centos.org/centos-7/7/",
 			"eol": "2024-06",
 			"alt": ["libglvnd"]
+		}, {
+			"name": "8",
+			"code": "centos_8",
+			"link": "http://mirror.centos.org/centos-8/8/",
+			"eol": "2029-05",
+			"alt": ["libglvnd"]
 		}]
 	},
 	{
@@ -103,6 +109,10 @@
 			"code": "fedora_32",
 			"eol": "2021-05"
 		}, {
+			"name": "33",
+			"code": "fedora_33",
+			"eol": "2021-11"
+		}, {
 			"name": "Rawhide",
 			"code": "fedora_rawhide",
 			"eol": "inf"
@@ -129,9 +139,16 @@
 		"name": "OpenMandriva",
 		"link": "https://www.openmandriva.org/",
 		"releases": [{
-			"name": "3.x",
-			"code": "openmandriva_3",
+			"name": "4.0",
+			"code": "openmandriva_4",
 			"alt": ["libglvnd"]
+		}, {
+			"name": "4.1",
+			"code": "openmandriva_4_1",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "Rolling",
+			"code": "openmandriva_rolling"
 		}, {
 			"name": "Cooker",
 			"code": "openmandriva_cooker"
