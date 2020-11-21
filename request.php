@@ -129,6 +129,11 @@ if (stripos($dependency_code, 'python:') === 0)
 {
 	$python_code = substr($dependency_code, 7);
 
+	// Some package names on PyPI differ from the one they have on Repology
+	$aliasing = load_json('./data/pypi_aliasing.json');
+	if (array_key_exists($python_code, $aliasing))
+		$python_code = $aliasing[$python_code];
+
 	curl_setopt_array($ch, array(
 		CURLOPT_HEADER => False,
 		CURLOPT_RETURNTRANSFER => True,
