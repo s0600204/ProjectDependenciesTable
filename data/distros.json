@@ -121,14 +121,44 @@
 	{
 		"name": "FreeBSD",
 		"code": "freebsd",
-		"link": "https://www.freebsd.org/",
-		"alt": ["premake"]
+		"link": "https://www.freebsd.org/"
 	},
 	{
 		"name": "Gentoo",
 		"code": "gentoo",
 		"link": "https://www.gentoo.org/",
 		"eol": "inf"
+	},
+	{
+		"name": "Mageia",
+		"link": "https://www.mageia.org/en/",
+		"releases": [{
+			"name": "6",
+			"code": "mageia_6"
+		}, {
+			"name": "7",
+			"code": "mageia_7"
+		}, {
+			"name": "8",
+			"code": "mageia_8"
+		}, {
+			"name": "Cauldron",
+			"code": "mageia_cauldron"
+		}]
+	},
+	{
+		"name": "Manjaro",
+		"link": "https://manjaro.org/",
+		"releases": [{
+			"name": "Stable",
+			"code": "manjaro_stable"
+		}, {
+			"name": "Testing",
+			"code": "manjaro_testing"
+		}, {
+			"name": "Unstable",
+			"code": "manjaro_unstable"
+		}]
 	},
 	{
 		"name": "OpenBSD",
@@ -145,6 +175,10 @@
 		}, {
 			"name": "4.1",
 			"code": "openmandriva_4_1",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "4.2",
+			"code": "openmandriva_4_2",
 			"alt": ["libglvnd"]
 		}, {
 			"name": "Rolling",
@@ -174,6 +208,10 @@
 		}, {
 			"name": "Leap 15.2",
 			"code": "opensuse_leap_15_2",
+			"alt": ["nspr"]
+		}, {
+			"name": "Leap 15.3",
+			"code": "opensuse_leap_15_3",
 			"alt": ["nspr"]
 		}, {
 			"name": "Tumbleweed",
@@ -243,11 +281,6 @@
 			"eol": "2023-04",
 			"link": "https://packages.ubuntu.com/bionic/"
 		}, {
-			"name": "Eoan (19.10)",
-			"code": "ubuntu_19_10",
-			"eol": "2020-07",
-			"link": "https://packages.ubuntu.com/eoan/"
-		}, {
 			"name": "Focal (20.04)",
 			"code": "ubuntu_20_04",
 			"eol": "2025-04",
@@ -258,8 +291,13 @@
 			"eol": "2021-07",
 			"link": "https://packages.ubuntu.com/groovy/"
 		}, {
+			"name": "Hirsuite (21.04)",
+			"code": "ubuntu_21_04",
+			"eol": "2022-01",
+			"link": "https://packages.ubuntu.com/hirsuite/"
+		}, {
 			"name": "0 A.D. PPA",
-			"link": "https://launchpad.net/~wfg/+archive/ubuntu/0ad.dev/+packages",
+			"link": "https://launchpad.net/~wfg/+archive/ubuntu/0ad/+packages",
 			"eol": "inf",
 			"hard": {
 				"boost": "1.58",
@@ -275,8 +313,7 @@
 	{
 		"name": "Void Linux",
 		"link": "https://voidlinux.org/",
-		"code": "void_x86_64",
-		"alt": ["premake"]
+		"code": "void_x86_64"
 	},
 	{
 		"name": "0 A.D. Bundled",
@@ -284,11 +321,15 @@
 		"hard": {
 			"cxxtest": "4.4",
 			"fcollada": "3.05-patched",
+			"json-spirit": "2014-05-10",
+			"mikktspace": "1.0",
+			"mongoose-web-server": "2011",
 			"nvidia-texture-tools": "2.1.1-patched",
-			"premake": "5.0.0-alpha13",
+			"premake": "5.0.0-alpha15",
 			"premake:cxxtest": "1.0.0-dev",
 			"premake:pkgconfig": "1.1.0-dev",
-			"spidermonkey": "45.0.2",
+			"spidermonkey": "78.6.0",
+			"tinygettext": "2009",
 			"valgrind": "3.8"
 		}
 	}
