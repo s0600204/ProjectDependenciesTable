@@ -10,12 +10,9 @@
 				"code": "boost",
 				"minRequired": "1.57"
 			}, {
-				"name": "CMake",
-				"code": "cmake"
-			}, {
-				"name": "gcc",
-				"code": "gcc",
-				"minRequired": "4.8.1"
+				"name": "fmt",
+				"code": "fmt",
+				"minRequired": "4.0"
 			}, {
 				"name": "libcurl",
 				"code": "curl",
@@ -73,9 +70,6 @@
 				"code": "sdl2",
 				"minRequired": "2.0.2"
 			}, {
-				"name": "subversion",
-				"code": "subversion"
-			}, {
 				"name": "wxwidgets",
 				"code": "wxwidgets"
 			}, {
@@ -83,11 +77,29 @@
 				"code": "zlib"
 			}
 		],
-		"<--": [
+		"0.0.24 make": [
 			{
-				"name": "fmt",
-				"code": "fmt",
-				"minRequired": "4.0"
+				"name": "CMake",
+				"code": "cmake",
+				"minRequired": "2.8"
+			}, {
+				"name": "clang",
+				"code": "llvm",
+				"minRequired": "5"
+			}, {
+				"name": "gcc",
+				"code": "gcc",
+				"minRequired": "7"
+			}, {
+				"name": "python",
+				"code": "python",
+				"minRequired": "3.6"
+			}, {
+				"name": "rust",
+				"code": "rust"
+			}, {
+				"name": "subversion",
+				"code": "subversion"
 			}
 		],
 		"system/bundled": [
@@ -98,14 +110,7 @@
 			}, {
 				"name": "premake",
 				"code": "premake",
-				"alt-name": ["premake5"],
-				"alt-code": ["premake5"],
-				"minRequired": "5.0a",
-				"always-show-alt": false
-			}, {
-				"name": "spidermonkey",
-				"code": "spidermonkey",
-				"minRequired": "45.0.2"
+				"minRequired": "5.0a"
 			}
 		],
 		"bundled": [
@@ -116,11 +121,27 @@
 				"name": "fcollada",
 				"code": "fcollada"
 			}, {
+				"name": "jsonspirit",
+				"code": "json-spirit"
+			}, {
+				"name": "mikktspace",
+				"code": "mikktspace"
+			}, {
+				"name": "mongoose",
+				"code": "mongoose-web-server"
+			}, {
 				"name": "premake-cxxtest",
 				"code": "premake:cxxtest"
 			}, {
 				"name": "premake-pkgconfig",
 				"code": "premake:pkgconfig"
+			}, {
+				"name": "spidermonkey",
+				"code": "spidermonkey",
+				"minRequired": "78.6.0"
+			}, {
+				"name": "tinygettext",
+				"code": "tinygettext"
 			}, {
 				"name": "valgrind",
 				"code": "valgrind"
