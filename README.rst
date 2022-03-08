@@ -2,9 +2,9 @@
 Project Dependencies Table
 ==========================
 
-Based on data supplied by Repology_.
+Based on data supplied via the Repology_ and PyPI_ APIs.
 
-An example of the end result can be found at: http://s06eye.co.uk/0ad/linuxDeps.
+An example of the end result can be found at: http://s06eye.co.uk/deps.
 
 
 Guide
@@ -156,4 +156,5 @@ Server load
 
 
 .. _Repology: https://repology.org/
+.. _PyPI: https://pypi.org/
 .. _PPA: https://help.launchpad.net/Packaging/PPA
