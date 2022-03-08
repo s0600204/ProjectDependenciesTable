@@ -1,0 +1,77 @@
+{
+	"name": "Vega Strike",
+	"code": "vegastrike",
+	"url": "https://www.vega-strike.org",
+
+	"dependencies": {
+		"main": [
+			{
+				"name": "autoconf",
+				"code": "autoconf"
+			}, {
+				"name": "automake",
+				"code": "automake"
+			}, {
+				"name": "boost",
+				"code": "boost"
+			}, {
+				"name": "cmake",
+				"code": "cmake",
+				"minRequired": "2.8.8"
+			}, {
+				"name": "expat",
+				"code": "expat"
+			}, {
+				"name": "freeglut",
+				"code": "freeglut"
+			}, {
+				"name": "freeimage",
+				"code": "freeimage"
+			}, {
+				"name": "gcc",
+				"code": "gcc"
+			}, {
+				"name": "libGL",
+				"code": "libglvnd",
+				"alt-name": ["mesa-libgl"],
+				"alt-code": ["mesa"],
+				"always-show-alt": false
+			}, {
+				"name": "gtk2",
+				"code": "gtk",
+				"minRequired": "2.0"
+			}, {
+				"name": "libjpeg-turbo",
+				"code": "libjpeg-turbo"
+			}, {
+				"name": "libpng",
+				"code": "libpng"
+			}, {
+				"name": "make",
+				"code": "make"
+			}, {
+				"name": "OpenAL",
+				"code": "openal-soft"
+			}, {
+				"name": "python",
+				"code": "python",
+				"minRequired": "2.2.1"
+			}
+		],
+		"dev": [
+			{
+				"name": "boost",
+				"code": "boost",
+				"minRequired": "1.67"
+			}, {
+				"name": "cmake",
+				"code": "cmake",
+				"minRequired": "3.12"
+			}, {
+				"name": "python",
+				"code": "python",
+				"minRequired": "3"
+			}
+		]
+	}
+}
