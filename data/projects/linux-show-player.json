@@ -13,13 +13,17 @@
 				"code": "ola"
 			}, {
 				"name": "python-falcon",
-				"code": "python:falcon"
+				"code": "python:falcon",
+				"minRequired": "3.0"
 			}, {
 				"name": "python-gobject",
 				"code": "python:pygobject3"
 			}, {
 				"name": "python-pyliblo",
-				"code": "python:pyliblo"
+				"code": "python:pyliblo",
+				"alt-name": ["pyliblo"],
+				"alt-code": ["pyliblo"],
+				"always-show-alt": true
 			}, {
 				"name": "python-mido",
 				"code": "python:mido"
@@ -28,10 +32,16 @@
 				"code": "python:pyqt5"
 			}, {
 				"name": "python-requests",
-				"code": "python:requests"
+				"code": "python:requests",
+				"alt-name": ["requests"],
+				"alt-code": ["requests"],
+				"always-show-alt": true
 			}, {
 				"name": "python-rtmidi",
-				"code": "python:rtmidi"
+				"code": "python:python-rtmidi",
+				"alt-name": ["python:rtmidi"],
+				"alt-code": ["python:rtmidi"],
+				"always-show-alt": true
 			}, {
 				"name": "python-sortedcontainers",
 				"code": "python:sortedcontainers"
@@ -42,8 +52,17 @@
 		],
 		"make": [
 			{
+				"name": "python-poetry-core",
+				"code": "python:poetry-core",
+				"alt-name": ["poetry-core"],
+				"alt-code": ["poetry-core"],
+				"always-show-alt": true
+			}, {
 				"name": "python-setuptools",
-				"code": "python:setuptools"
+				"code": "python:setuptools",
+				"alt-name": ["setuptools"],
+				"alt-code": ["setuptools"],
+				"always-show-alt": true
 			}
 		],
 		"optional": [
