@@ -40,29 +40,48 @@
 	{
 		"name": "Debian",
 		"releases": [{
-			"name": "Stretch (oldstable)",
-			"code": "debian_oldstable",
+			"name": "Stretch (9)",
+			"code": "debian_9",
 			"link": "https://packages.debian.org/stretch/",
 			"eol": "2020",
 			"alt": ["libglvnd"]
 		}, {
-			"name": "Buster (stable)",
-			"code": "debian_stable",
+			"name": "Stretch backports",
+			"code": "debian_9_backports",
+			"link": "https://packages.debian.org/stretch-backports/",
+			"eol": "2020",
+			"alt": ["libglvnd"]
+		}, {
+			"name": "Buster (10)",
+			"code": "debian_10",
 			"link": "https://packages.debian.org/buster/",
 			"eol": "2022"
 		}, {
-			"name": "(stable backports)",
-			"code": "debian_stable_backports",
+			"name": "Buster backports",
+			"code": "debian_10_backports",
 			"link": "https://packages.debian.org/buster-backports/",
 			"eol": "2022"
 		}, {
-			"name": "Bullseye (testing)",
-			"code": "debian_testing",
+			"name": "Bullseye (11)",
+			"code": "debian_11",
 			"link": "https://packages.debian.org/bullseye/"
+		}, {
+			"name": "Bullseye backports",
+			"code": "debian_11_backports",
+			"link": "https://packages.debian.org/bullseye-backports/"
+		}, {
+			"name": "Bookworm (12)",
+			"code": "debian_12",
+			"link": "https://packages.debian.org/bookworm/"
 		}, {
 			"name": "Sid (unstable)",
 			"code": "debian_unstable",
 			"link": "https://packages.debian.org/unstable/",
+			"eol": "inf"
+		}, {
+			"name": "(Experimental)",
+			"code": "debian_experimental",
+			"link": "https://packages.debian.org/experimental/",
 			"eol": "inf"
 		}]
 	},
