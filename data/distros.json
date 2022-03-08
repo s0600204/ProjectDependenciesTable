@@ -20,19 +20,19 @@
 		"releases": [{
 			"name": "6",
 			"code": "centos_6",
-			"link": "http://mirror.centos.org/centos-6/6/",
+			"link": "http://mirror.centos.org/centos-6/",
 			"eol": "2020-11",
 			"alt": ["libglvnd"]
 		}, {
 			"name": "7",
 			"code": "centos_7",
-			"link": "http://mirror.centos.org/centos-7/7/",
+			"link": "http://mirror.centos.org/centos-7/",
 			"eol": "2024-06",
 			"alt": ["libglvnd"]
 		}, {
 			"name": "8",
 			"code": "centos_8",
-			"link": "http://mirror.centos.org/centos-8/8/",
+			"link": "http://mirror.centos.org/centos-8/",
 			"eol": "2029-05",
 			"alt": ["libglvnd"]
 		}]
@@ -94,6 +94,12 @@
 		}, {
 			"name": "7",
 			"code": "epel_7"
+		}, {
+			"name": "8",
+			"code": "epel_8"
+		}, {
+			"name": "9",
+			"code": "epel_9"
 		}]
 	},
 	{
@@ -132,6 +138,18 @@
 			"code": "fedora_33",
 			"eol": "2021-11"
 		}, {
+			"name": "34",
+			"code": "fedora_34",
+			"eol": "2022-05"
+		}, {
+			"name": "35",
+			"code": "fedora_35",
+			"eol": "2022-11"
+		}, {
+			"name": "36",
+			"code": "fedora_36",
+			"eol": "2023-05"
+		}, {
 			"name": "Rawhide",
 			"code": "fedora_rawhide",
 			"eol": "inf"
@@ -152,9 +170,6 @@
 		"name": "Mageia",
 		"link": "https://www.mageia.org/en/",
 		"releases": [{
-			"name": "6",
-			"code": "mageia_6"
-		}, {
 			"name": "7",
 			"code": "mageia_7"
 		}, {
@@ -200,6 +215,10 @@
 			"code": "openmandriva_4_2",
 			"alt": ["libglvnd"]
 		}, {
+			"name": "4.3",
+			"code": "openmandriva_4_3",
+			"alt": ["libglvnd"]
+		}, {
 			"name": "Rolling",
 			"code": "openmandriva_rolling"
 		}, {
@@ -231,6 +250,10 @@
 		}, {
 			"name": "Leap 15.3",
 			"code": "opensuse_leap_15_3",
+			"alt": ["nspr"]
+		}, {
+			"name": "Leap 15.4",
+			"code": "opensuse_leap_15_4",
 			"alt": ["nspr"]
 		}, {
 			"name": "Tumbleweed",
@@ -268,6 +291,10 @@
 			"alt": ["nspr", "libglvnd"],
 			"code": "slackware_14_2"
 		}, {
+			"name": "15",
+			"alt": ["nspr", "libglvnd"],
+			"code": "slackware_15_0"
+		}, {
 			"name": "Current",
 			"alt": ["nspr", "libglvnd"],
 			"code": "slackware_current"
@@ -298,22 +325,27 @@
 			"name": "Bionic (18.04)",
 			"code": "ubuntu_18_04",
 			"eol": "2023-04",
-			"link": "https://packages.ubuntu.com/bionic/"
+			"link": "https://packages.ubuntu.com/bionic/",
+			"alt": ["libglvnd"]
 		}, {
 			"name": "Focal (20.04)",
 			"code": "ubuntu_20_04",
 			"eol": "2025-04",
 			"link": "https://packages.ubuntu.com/focal/"
 		}, {
-			"name": "Groovy (20.10)",
-			"code": "ubuntu_20_10",
-			"eol": "2021-07",
-			"link": "https://packages.ubuntu.com/groovy/"
-		}, {
 			"name": "Hirsuite (21.04)",
 			"code": "ubuntu_21_04",
 			"eol": "2022-01",
 			"link": "https://packages.ubuntu.com/hirsuite/"
+		}, {
+			"name": "Impish (21.10)",
+			"code": "ubuntu_21_10",
+			"eol": "2022-07",
+			"link": "https://packages.ubuntu.com/impish/"
+		}, {
+			"name": "Jammy (22.04)",
+			"code": "ubuntu_22_04",
+			"link": "https://packages.ubuntu.com/jammy/"
 		}, {
 			"name": "0 A.D. PPA",
 			"link": "https://launchpad.net/~wfg/+archive/ubuntu/0ad/+packages",
@@ -339,6 +371,12 @@
 				"libsodium": "1.0.18"
 			}
 		}]
+	},
+	{
+		"name": "VCPKG",
+		"link": "https://vcpkg.io/",
+		"code": "vcpkg",
+		"alt": ["libglvnd", "python:glad"]
 	},
 	{
 		"name": "Void Linux",
