@@ -300,13 +300,24 @@
 			"link": "https://launchpad.net/~wfg/+archive/ubuntu/0ad/+packages",
 			"eol": "inf",
 			"hard": {
+				"0ad": "0.0.25",
 				"boost": "1.58",
-				"debhelper": "10.2.2",
 				"enet": "1.3.12",
 				"gloox": "1.0.20",
 				"libsodium": "1.0.16",
-				"mozjs38": "38.8.0",
-				"nvtt": "2.0.8"
+				"mozjs38": "38.8.0"
+			}
+		}, {
+			"name": "0 A.D. Dev PPA",
+			"link": "https://launchpad.net/~wfg/+archive/ubuntu/0ad.dev/+packages",
+			"eol": "inf",
+			"hard": {
+				"0ad": "0.0.25",
+				"debhelper": "12.1.1",
+				"dh-reconfig": "19",
+				"enet": "1.3.13",
+				"gloox": "1.0.22",
+				"libsodium": "1.0.18"
 			}
 		}]
 	},
